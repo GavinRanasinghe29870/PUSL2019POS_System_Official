@@ -28,13 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.Login_panel = new System.Windows.Forms.Panel();
             this.SuspendLayout();
+            // 
+            // Login_panel
+            // 
+            this.Login_panel.Location = new System.Drawing.Point(534, 140);
+            this.Login_panel.Name = "Login_panel";
+            this.Login_panel.Size = new System.Drawing.Size(200, 100);
+            this.Login_panel.TabIndex = 0;
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 685);
+            this.ClientSize = new System.Drawing.Size(1028, 705);
+            this.Controls.Add(this.Login_panel);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
@@ -42,5 +51,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel Login_panel;
     }
 }
