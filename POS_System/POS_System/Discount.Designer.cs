@@ -31,7 +31,6 @@
             this.dgvDiscounts = new System.Windows.Forms.DataGridView();
             this.txtProductID = new System.Windows.Forms.TextBox();
             this.lblProID = new System.Windows.Forms.Label();
-            this.chkBoxProduct = new System.Windows.Forms.CheckBox();
             this.lblProductSpecific = new System.Windows.Forms.Label();
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
@@ -45,6 +44,7 @@
             this.lblPercentage = new System.Windows.Forms.Label();
             this.lblDisType = new System.Windows.Forms.Label();
             this.lblTopic = new System.Windows.Forms.Label();
+            this.cmbBoxSpec = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscounts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,17 +80,6 @@
             this.lblProID.Size = new System.Drawing.Size(158, 31);
             this.lblProID.TabIndex = 48;
             this.lblProID.Text = "Product ID :";
-            // 
-            // chkBoxProduct
-            // 
-            this.chkBoxProduct.AutoSize = true;
-            this.chkBoxProduct.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.chkBoxProduct.Location = new System.Drawing.Point(316, 404);
-            this.chkBoxProduct.Name = "chkBoxProduct";
-            this.chkBoxProduct.Size = new System.Drawing.Size(150, 29);
-            this.chkBoxProduct.TabIndex = 47;
-            this.chkBoxProduct.Text = "checkBox1";
-            this.chkBoxProduct.UseVisualStyleBackColor = true;
             // 
             // lblProductSpecific
             // 
@@ -228,15 +217,23 @@
             this.lblTopic.TabIndex = 34;
             this.lblTopic.Text = "Discount Page";
             // 
+            // cmbBoxSpec
+            // 
+            this.cmbBoxSpec.FormattingEnabled = true;
+            this.cmbBoxSpec.Location = new System.Drawing.Point(316, 404);
+            this.cmbBoxSpec.Name = "cmbBoxSpec";
+            this.cmbBoxSpec.Size = new System.Drawing.Size(247, 33);
+            this.cmbBoxSpec.TabIndex = 51;
+            // 
             // Discount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1513, 932);
+            this.Controls.Add(this.cmbBoxSpec);
             this.Controls.Add(this.dgvDiscounts);
             this.Controls.Add(this.txtProductID);
             this.Controls.Add(this.lblProID);
-            this.Controls.Add(this.chkBoxProduct);
             this.Controls.Add(this.lblProductSpecific);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.EditBtn);
@@ -263,7 +260,6 @@
         private System.Windows.Forms.DataGridView dgvDiscounts;
         private System.Windows.Forms.TextBox txtProductID;
         private System.Windows.Forms.Label lblProID;
-        private System.Windows.Forms.CheckBox chkBoxProduct;
         private System.Windows.Forms.Label lblProductSpecific;
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.Button EditBtn;
@@ -277,5 +273,6 @@
         private System.Windows.Forms.Label lblPercentage;
         private System.Windows.Forms.Label lblDisType;
         private System.Windows.Forms.Label lblTopic;
+        private System.Windows.Forms.ComboBox cmbBoxSpec;
     }
 }
