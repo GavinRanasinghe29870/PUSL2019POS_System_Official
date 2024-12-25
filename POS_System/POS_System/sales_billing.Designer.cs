@@ -36,7 +36,7 @@ namespace POS_System
             // txtBarcode
             // 
             this.txtBarcode.Location = new System.Drawing.Point(16, 15);
-            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBarcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtBarcode.Name = "txtBarcode";
             this.txtBarcode.Size = new System.Drawing.Size(265, 22);
             this.txtBarcode.TabIndex = 0;
@@ -44,7 +44,7 @@ namespace POS_System
             // numericDiscount
             // 
             this.numericDiscount.Location = new System.Drawing.Point(16, 47);
-            this.numericDiscount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.numericDiscount.Name = "numericDiscount";
             this.numericDiscount.Size = new System.Drawing.Size(265, 22);
             this.numericDiscount.TabIndex = 1;
@@ -53,9 +53,10 @@ namespace POS_System
             // dgvCart
             // 
             this.dgvCart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
+            this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvCart.Location = new System.Drawing.Point(16, 79);
-            this.dgvCart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvCart.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.Size = new System.Drawing.Size(1035, 308);
@@ -106,7 +107,7 @@ namespace POS_System
             this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
             this.btnAddProduct.ForeColor = System.Drawing.Color.Black;
             this.btnAddProduct.Location = new System.Drawing.Point(291, 12);
-            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAddProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(100, 28);
             this.btnAddProduct.TabIndex = 7;
@@ -118,7 +119,7 @@ namespace POS_System
             // 
             this.btnRemoveProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
             this.btnRemoveProduct.Location = new System.Drawing.Point(399, 12);
-            this.btnRemoveProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRemoveProduct.Margin = new System.Windows.Forms.Padding(4);
             this.btnRemoveProduct.Name = "btnRemoveProduct";
             this.btnRemoveProduct.Size = new System.Drawing.Size(133, 28);
             this.btnRemoveProduct.TabIndex = 8;
@@ -130,7 +131,7 @@ namespace POS_System
             // 
             this.btnGenerateBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
             this.btnGenerateBill.Location = new System.Drawing.Point(540, 12);
-            this.btnGenerateBill.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGenerateBill.Margin = new System.Windows.Forms.Padding(4);
             this.btnGenerateBill.Name = "btnGenerateBill";
             this.btnGenerateBill.Size = new System.Drawing.Size(133, 28);
             this.btnGenerateBill.TabIndex = 9;
@@ -153,7 +154,7 @@ namespace POS_System
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.numericDiscount);
             this.Controls.Add(this.txtBarcode);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "sales_billing";
             this.Text = "Sales and Billing";
             ((System.ComponentModel.ISupportInitialize)(this.numericDiscount)).EndInit();

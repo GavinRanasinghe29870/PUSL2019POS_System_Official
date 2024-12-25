@@ -16,5 +16,10 @@ namespace POS_System
         {
             InitializeComponent();
         }
+
+        private void textBox1_login_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

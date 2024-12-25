@@ -78,6 +78,7 @@
             this.textBox1_login.Name = "textBox1_login";
             this.textBox1_login.Size = new System.Drawing.Size(281, 34);
             this.textBox1_login.TabIndex = 12;
+            this.textBox1_login.TextChanged += new System.EventHandler(this.textBox1_login_TextChanged);
             // 
             // label3_login
             // 
