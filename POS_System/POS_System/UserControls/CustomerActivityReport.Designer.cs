@@ -36,7 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.dataGridViewT = new System.Windows.Forms.DataGridView();
+            this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
             this.customerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPurchases = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,7 +46,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,22 +106,22 @@
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = false;
             // 
-            // dataGridViewT
+            // dataGridViewCustomer
             // 
-            this.dataGridViewT.AllowUserToAddRows = false;
-            this.dataGridViewT.AllowUserToDeleteRows = false;
-            this.dataGridViewT.AllowUserToResizeColumns = false;
-            this.dataGridViewT.AllowUserToResizeRows = false;
+            this.dataGridViewCustomer.AllowUserToAddRows = false;
+            this.dataGridViewCustomer.AllowUserToDeleteRows = false;
+            this.dataGridViewCustomer.AllowUserToResizeColumns = false;
+            this.dataGridViewCustomer.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewT.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewT.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewT.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewT.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewCustomer.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewCustomer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewCustomer.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewCustomer.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -130,9 +130,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewCustomer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.customerID,
             this.customerName,
             this.totalPurchases,
@@ -145,11 +145,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewT.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewT.EnableHeadersVisualStyles = false;
-            this.dataGridViewT.Location = new System.Drawing.Point(59, 262);
-            this.dataGridViewT.Name = "dataGridViewT";
-            this.dataGridViewT.ReadOnly = true;
+            this.dataGridViewCustomer.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewCustomer.EnableHeadersVisualStyles = false;
+            this.dataGridViewCustomer.Location = new System.Drawing.Point(59, 262);
+            this.dataGridViewCustomer.Name = "dataGridViewCustomer";
+            this.dataGridViewCustomer.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(151)))), ((int)(((byte)(178)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -157,11 +157,11 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewT.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewT.RowHeadersVisible = false;
-            this.dataGridViewT.RowHeadersWidth = 62;
-            this.dataGridViewT.Size = new System.Drawing.Size(931, 411);
-            this.dataGridViewT.TabIndex = 198;
+            this.dataGridViewCustomer.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewCustomer.RowHeadersVisible = false;
+            this.dataGridViewCustomer.RowHeadersWidth = 62;
+            this.dataGridViewCustomer.Size = new System.Drawing.Size(931, 411);
+            this.dataGridViewCustomer.TabIndex = 198;
             // 
             // customerID
             // 
@@ -224,6 +224,7 @@
             this.btnPDF.TabIndex = 197;
             this.btnPDF.Text = "Export as PDF";
             this.btnPDF.UseVisualStyleBackColor = false;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
             // panel2
             // 
@@ -253,14 +254,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(236)))), ((int)(((byte)(234)))));
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataGridViewT);
+            this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.btnPDF);
             this.Controls.Add(this.panel2);
             this.Name = "CustomerActivityReport";
             this.Size = new System.Drawing.Size(1047, 709);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -273,7 +274,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.DataGridView dataGridViewT;
+        private System.Windows.Forms.DataGridView dataGridViewCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerID;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerName;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPurchases;
