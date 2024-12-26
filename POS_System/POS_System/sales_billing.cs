@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace POS_System
 {
-    public partial class Login : Form
+    public partial class sales_billing : Form
     {
-        public Login()
+        public sales_billing()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_login_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
