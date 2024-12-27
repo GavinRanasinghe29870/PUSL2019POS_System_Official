@@ -2,6 +2,6 @@
 {
     internal class ConnectionString
     {
-        public static string constring = "Data Source=DESKTOP-MMGDUON\\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True";
+        public static string constring = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
     }
 }
