@@ -42,7 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridViewT = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSales = new System.Windows.Forms.DataGridView();
             this.saleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +54,7 @@
             this.btnPDF = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSales)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
@@ -107,17 +107,23 @@
             // dtTo
             // 
             this.dtTo.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtTo.Checked = false;
+            this.dtTo.CustomFormat = "dddd, dd/MM/yyyy";
             this.dtTo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtTo.Location = new System.Drawing.Point(443, 70);
             this.dtTo.Margin = new System.Windows.Forms.Padding(2);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(305, 31);
             this.dtTo.TabIndex = 166;
+            this.dtTo.Value = new System.DateTime(2024, 12, 25, 0, 0, 0, 0);
             // 
             // dtFrom
             // 
             this.dtFrom.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFrom.CustomFormat = "dddd, dd/MM/yyyy";
             this.dtFrom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtFrom.Location = new System.Drawing.Point(79, 70);
             this.dtFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dtFrom.Name = "dtFrom";
@@ -177,22 +183,22 @@
             this.label1.TabIndex = 194;
             this.label1.Text = "-";
             // 
-            // dataGridViewT
+            // dataGridViewSales
             // 
-            this.dataGridViewT.AllowUserToAddRows = false;
-            this.dataGridViewT.AllowUserToDeleteRows = false;
-            this.dataGridViewT.AllowUserToResizeColumns = false;
-            this.dataGridViewT.AllowUserToResizeRows = false;
+            this.dataGridViewSales.AllowUserToAddRows = false;
+            this.dataGridViewSales.AllowUserToDeleteRows = false;
+            this.dataGridViewSales.AllowUserToResizeColumns = false;
+            this.dataGridViewSales.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewT.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewT.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewT.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.dataGridViewT.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridViewSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewSales.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dataGridViewSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -201,9 +207,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewT.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.saleID,
             this.date,
             this.customerID,
@@ -219,11 +225,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewT.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewT.EnableHeadersVisualStyles = false;
-            this.dataGridViewT.Location = new System.Drawing.Point(59, 262);
-            this.dataGridViewT.Name = "dataGridViewT";
-            this.dataGridViewT.ReadOnly = true;
+            this.dataGridViewSales.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewSales.EnableHeadersVisualStyles = false;
+            this.dataGridViewSales.Location = new System.Drawing.Point(59, 262);
+            this.dataGridViewSales.Name = "dataGridViewSales";
+            this.dataGridViewSales.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(151)))), ((int)(((byte)(178)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,11 +237,11 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewT.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewT.RowHeadersVisible = false;
-            this.dataGridViewT.RowHeadersWidth = 62;
-            this.dataGridViewT.Size = new System.Drawing.Size(931, 411);
-            this.dataGridViewT.TabIndex = 193;
+            this.dataGridViewSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewSales.RowHeadersVisible = false;
+            this.dataGridViewSales.RowHeadersWidth = 62;
+            this.dataGridViewSales.Size = new System.Drawing.Size(931, 411);
+            this.dataGridViewSales.TabIndex = 193;
             // 
             // saleID
             // 
@@ -322,6 +328,7 @@
             this.btnPDF.TabIndex = 192;
             this.btnPDF.Text = "Export as PDF";
             this.btnPDF.UseVisualStyleBackColor = false;
+            this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
             // 
             // SalesReport
             // 
@@ -331,7 +338,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridViewT);
+            this.Controls.Add(this.dataGridViewSales);
             this.Controls.Add(this.btnPDF);
             this.Name = "SalesReport";
             this.Size = new System.Drawing.Size(1047, 709);
@@ -339,7 +346,7 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -357,7 +364,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridViewT;
+        private System.Windows.Forms.DataGridView dataGridViewSales;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleID;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerID;
