@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
 using System.Data.SqlClient;
+using POS_System.Classes;
 
 namespace POS_System.UserControls
 {
