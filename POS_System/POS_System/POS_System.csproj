@@ -227,12 +227,6 @@
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="stockManagement.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="stockManagement.Designer.cs">
-      <DependentUpon>stockManagement.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\CustomerActivityReport.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -263,13 +257,8 @@
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-
-    <EmbeddedResource Include="stockManagement.resx">
-      <DependentUpon>stockManagement.cs</DependentUpon>
-
     <EmbeddedResource Include="sales_billing.resx">
       <DependentUpon>sales_billing.cs</DependentUpon>
-
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CustomerActivityReport.resx">
       <DependentUpon>CustomerActivityReport.cs</DependentUpon>
