@@ -271,9 +271,6 @@
 <EmbeddedResource Include="sales_billing.resx">
   <DependentUpon>sales_billing.cs</DependentUpon>
 </EmbeddedResource>
-
-
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CustomerActivityReport.resx">
       <DependentUpon>CustomerActivityReport.cs</DependentUpon>
     </EmbeddedResource>
