@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text.pdf;
 using iTextSharp.text;
+using System.Data.SqlClient;
+using POS_System.Classes;
 
 namespace POS_System.UserControls
 {
@@ -113,6 +115,105 @@ namespace POS_System.UserControls
                         MessageBox.Show("Error :" + ex.Message);
                     }
                 }
+            }
+        }
+
+        private void InventoryReport_Load(object sender, EventArgs e)
+        {
+            string conString = ConnectionString.constring;
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    if (cn.State == ConnectionState.Closed)
+                        cn.Open();
+                    using (DataTable dt = new DataTable("Products"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT ProductID, ProductName, Price, Category, Quantity, (Quantity * Price) AS TotalValue FROM Products", cn))
+                        {
+                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                            adapter.Fill(dt);
+
+                            // Format the TotalValue column to display two decimal places
+                            dataGridViewInventory.Columns["TotalValue"].DefaultCellStyle.Format = "N2";
+
+                            dataGridViewInventory.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string conString = ConnectionString.constring;
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    if (cn.State == ConnectionState.Closed)
+                        cn.Open();
+                    using (DataTable dt = new DataTable("Products"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT ProductID, ProductName, Price, Category, Quantity, (Quantity * Price) AS TotalValue FROM Products WHERE ProductID=@ProductID", cn))
+                        {
+                            cmd.Parameters.AddWithValue("@ProductID", txtSearch.Text);
+                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                            adapter.Fill(dt);
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("Invalid ID, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            // Format the TotalValue column to display two decimal places
+                            dataGridViewInventory.Columns["TotalValue"].DefaultCellStyle.Format = "N2";
+
+                            dataGridViewInventory.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            string conString = ConnectionString.constring;
+            try
+            {
+                txtSearch.Text = string.Empty;
+
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    if (cn.State == ConnectionState.Closed)
+                        cn.Open();
+                    using (DataTable dt = new DataTable("Products"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT ProductID, ProductName, Price, Category, Quantity, (Quantity * Price) AS TotalValue FROM Products", cn))
+                        {
+                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                            adapter.Fill(dt);
+
+                            // Format the TotalValue column to display two decimal places
+                            dataGridViewInventory.Columns["TotalValue"].DefaultCellStyle.Format = "N2";
+
+                            dataGridViewInventory.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
