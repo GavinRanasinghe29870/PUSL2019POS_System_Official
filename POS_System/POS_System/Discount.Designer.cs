@@ -42,7 +42,7 @@
             this.lblTopic = new System.Windows.Forms.Label();
             this.cmbDisType = new System.Windows.Forms.ComboBox();
             this.numDisPercentage = new System.Windows.Forms.NumericUpDown();
-            this.cmbProduct = new System.Windows.Forms.ComboBox();
+            this.txtProID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDisPercentage)).BeginInit();
             this.SuspendLayout();
@@ -51,15 +51,16 @@
             // 
             this.dgvDiscounts.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
             this.dgvDiscounts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDiscounts.Location = new System.Drawing.Point(780, 404);
+            this.dgvDiscounts.Location = new System.Drawing.Point(631, 398);
             this.dgvDiscounts.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDiscounts.Name = "dgvDiscounts";
             this.dgvDiscounts.ReadOnly = true;
             this.dgvDiscounts.RowHeadersWidth = 82;
             this.dgvDiscounts.RowTemplate.Height = 33;
             this.dgvDiscounts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDiscounts.Size = new System.Drawing.Size(670, 450);
+            this.dgvDiscounts.Size = new System.Drawing.Size(1080, 450);
             this.dgvDiscounts.TabIndex = 50;
+            this.dgvDiscounts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDiscounts_CellContentClick_1);
             // 
             // productSpecific
             // 
@@ -85,6 +86,7 @@
             this.DeleteBtn.TabIndex = 45;
             this.DeleteBtn.Text = "DELETE";
             this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // EditBtn
             // 
@@ -210,25 +212,19 @@
             this.numDisPercentage.Size = new System.Drawing.Size(248, 31);
             this.numDisPercentage.TabIndex = 52;
             // 
-            // cmbProduct
+            // txtProID
             // 
-            this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D"});
-            this.cmbProduct.Location = new System.Drawing.Point(316, 396);
-            this.cmbProduct.Name = "cmbProduct";
-            this.cmbProduct.Size = new System.Drawing.Size(248, 33);
-            this.cmbProduct.TabIndex = 53;
+            this.txtProID.Location = new System.Drawing.Point(316, 398);
+            this.txtProID.Name = "txtProID";
+            this.txtProID.Size = new System.Drawing.Size(248, 31);
+            this.txtProID.TabIndex = 53;
             // 
             // Discount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1518, 904);
-            this.Controls.Add(this.cmbProduct);
+            this.ClientSize = new System.Drawing.Size(1736, 904);
+            this.Controls.Add(this.txtProID);
             this.Controls.Add(this.numDisPercentage);
             this.Controls.Add(this.cmbDisType);
             this.Controls.Add(this.dgvDiscounts);
@@ -270,6 +266,6 @@
         private System.Windows.Forms.Label lblTopic;
         private System.Windows.Forms.ComboBox cmbDisType;
         private System.Windows.Forms.NumericUpDown numDisPercentage;
-        private System.Windows.Forms.ComboBox cmbProduct;
+        private System.Windows.Forms.TextBox txtProID;
     }
 }
