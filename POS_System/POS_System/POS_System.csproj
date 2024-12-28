@@ -257,9 +257,11 @@
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="sales_billing.resx">
-      <DependentUpon>sales_billing.cs</DependentUpon>
-    </EmbeddedResource>
+
+<EmbeddedResource Include="sales_billing.resx">
+  <DependentUpon>sales_billing.cs</DependentUpon>
+</EmbeddedResource>
+
     <EmbeddedResource Include="UserControls\CustomerActivityReport.resx">
       <DependentUpon>CustomerActivityReport.cs</DependentUpon>
     </EmbeddedResource>
