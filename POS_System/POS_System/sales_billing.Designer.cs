@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using System;
+using System.Data.SqlClient;
 
 namespace POS_System
 {
     partial class sales_billing
     {
         private System.ComponentModel.IContainer components = null;
+        string connectionString = "Data Source=DESKTOP-QT104GF\\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True";
 
         protected override void Dispose(bool disposing)
         {
@@ -15,6 +17,10 @@ namespace POS_System
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+        private SqlConnection GetConnection()
+        {
+            return new SqlConnection(connectionString);
         }
 
         private void InitializeComponent()
@@ -200,9 +206,33 @@ namespace POS_System
             UpdateCart();
             txtBarcode.Clear();
         }
+        private void AddProductToDatabase(string barcode, decimal price, int quantity)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "INSERT INTO Products (Barcode, Price, Quantity) VALUES (@Barcode, @Price, @Quantity)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Barcode", barcode);
+                    cmd.Parameters.AddWithValue("@Price", price);
+                    cmd.Parameters.AddWithValue("@Quantity", quantity);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
         private void UpdateCart()
         {
+            // Ensure columns are defined only once
+            if (dgvCart.Columns.Count == 0)
+            {
+                dgvCart.Columns.Add("Name", "Product Name");
+                dgvCart.Columns.Add("Price", "Price");
+                dgvCart.Columns.Add("Quantity", "Quantity");
+                dgvCart.Columns.Add("Total", "Total");
+            }
+
             dgvCart.Rows.Clear();
             subtotal = 0;
 
@@ -248,6 +278,39 @@ namespace POS_System
             }
         }
 
+        //function 1
+        private decimal CalculateDiscountedTotal(decimal subtotal, decimal discount)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT dbo.CalculateDiscountedTotal(@subtotal, @discount)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@subtotal", subtotal);
+                    cmd.Parameters.AddWithValue("@discount", discount);
+                    conn.Open();
+                    return (decimal)cmd.ExecuteScalar();
+                }
+            }
+        }
+        //function 2
+
+        private decimal CalculateTax(decimal amount, decimal taxRate)
+        {
+            using (SqlConnection conn = GetConnection())
+            {
+                string query = "SELECT dbo.CalculateTax(@amount, @taxRate)";
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@amount", amount);
+                    cmd.Parameters.AddWithValue("@taxRate", taxRate);
+                    conn.Open();
+                    return (decimal)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
         private void btnGenerateBill_Click(object sender, EventArgs e)
         {
             string receipt = "Billing Receipt\n\nProducts:\n";
@@ -268,6 +331,7 @@ namespace POS_System
             MessageBox.Show(receipt, "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
+
 
     public class Product
     {
