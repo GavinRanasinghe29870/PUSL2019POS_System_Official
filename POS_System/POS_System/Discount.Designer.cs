@@ -43,6 +43,8 @@
             this.cmbDisType = new System.Windows.Forms.ComboBox();
             this.numDisPercentage = new System.Windows.Forms.NumericUpDown();
             this.txtProID = new System.Windows.Forms.TextBox();
+            this.txtDiscountID = new System.Windows.Forms.TextBox();
+            this.SearchBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDiscounts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDisPercentage)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +69,7 @@
             this.productSpecific.AutoSize = true;
             this.productSpecific.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productSpecific.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.productSpecific.Location = new System.Drawing.Point(62, 398);
+            this.productSpecific.Location = new System.Drawing.Point(61, 498);
             this.productSpecific.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.productSpecific.Name = "productSpecific";
             this.productSpecific.Size = new System.Drawing.Size(226, 31);
@@ -79,7 +81,7 @@
             this.DeleteBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
             this.DeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteBtn.ForeColor = System.Drawing.Color.White;
-            this.DeleteBtn.Location = new System.Drawing.Point(434, 701);
+            this.DeleteBtn.Location = new System.Drawing.Point(433, 801);
             this.DeleteBtn.Margin = new System.Windows.Forms.Padding(4);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(146, 48);
@@ -93,7 +95,7 @@
             this.EditBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
             this.EditBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditBtn.ForeColor = System.Drawing.Color.White;
-            this.EditBtn.Location = new System.Drawing.Point(256, 701);
+            this.EditBtn.Location = new System.Drawing.Point(255, 801);
             this.EditBtn.Margin = new System.Windows.Forms.Padding(4);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(116, 48);
@@ -107,7 +109,7 @@
             this.AddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
             this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddBtn.ForeColor = System.Drawing.Color.White;
-            this.AddBtn.Location = new System.Drawing.Point(68, 701);
+            this.AddBtn.Location = new System.Drawing.Point(67, 801);
             this.AddBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(116, 48);
@@ -119,7 +121,7 @@
             // dtpEndDate
             // 
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(316, 588);
+            this.dtpEndDate.Location = new System.Drawing.Point(315, 688);
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpEndDate.Name = "dtpEndDate";
             this.dtpEndDate.Size = new System.Drawing.Size(248, 31);
@@ -128,7 +130,7 @@
             // dtpStartDate
             // 
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(316, 496);
+            this.dtpStartDate.Location = new System.Drawing.Point(315, 596);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpStartDate.Name = "dtpStartDate";
             this.dtpStartDate.Size = new System.Drawing.Size(248, 31);
@@ -139,7 +141,7 @@
             this.endDate.AutoSize = true;
             this.endDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.endDate.Location = new System.Drawing.Point(62, 594);
+            this.endDate.Location = new System.Drawing.Point(61, 694);
             this.endDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.endDate.Name = "endDate";
             this.endDate.Size = new System.Drawing.Size(142, 31);
@@ -151,7 +153,7 @@
             this.startDate.AutoSize = true;
             this.startDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.startDate.Location = new System.Drawing.Point(62, 496);
+            this.startDate.Location = new System.Drawing.Point(61, 596);
             this.startDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.startDate.Name = "startDate";
             this.startDate.Size = new System.Drawing.Size(152, 31);
@@ -163,7 +165,7 @@
             this.percentage.AutoSize = true;
             this.percentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.percentage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.percentage.Location = new System.Drawing.Point(62, 302);
+            this.percentage.Location = new System.Drawing.Point(61, 402);
             this.percentage.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.percentage.Name = "percentage";
             this.percentage.Size = new System.Drawing.Size(168, 31);
@@ -175,7 +177,7 @@
             this.discountType.AutoSize = true;
             this.discountType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.discountType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.discountType.Location = new System.Drawing.Point(62, 210);
+            this.discountType.Location = new System.Drawing.Point(61, 310);
             this.discountType.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.discountType.Name = "discountType";
             this.discountType.Size = new System.Drawing.Size(204, 31);
@@ -200,30 +202,53 @@
             this.cmbDisType.Items.AddRange(new object[] {
             "Percentage",
             "Fixed"});
-            this.cmbDisType.Location = new System.Drawing.Point(316, 218);
+            this.cmbDisType.Location = new System.Drawing.Point(315, 318);
             this.cmbDisType.Name = "cmbDisType";
             this.cmbDisType.Size = new System.Drawing.Size(248, 33);
             this.cmbDisType.TabIndex = 51;
             // 
             // numDisPercentage
             // 
-            this.numDisPercentage.Location = new System.Drawing.Point(316, 302);
+            this.numDisPercentage.Location = new System.Drawing.Point(315, 402);
             this.numDisPercentage.Name = "numDisPercentage";
             this.numDisPercentage.Size = new System.Drawing.Size(248, 31);
             this.numDisPercentage.TabIndex = 52;
             // 
             // txtProID
             // 
-            this.txtProID.Location = new System.Drawing.Point(316, 398);
+            this.txtProID.Location = new System.Drawing.Point(315, 498);
             this.txtProID.Name = "txtProID";
             this.txtProID.Size = new System.Drawing.Size(248, 31);
             this.txtProID.TabIndex = 53;
+            // 
+            // txtDiscountID
+            // 
+            this.txtDiscountID.Location = new System.Drawing.Point(1370, 310);
+            this.txtDiscountID.Name = "txtDiscountID";
+            this.txtDiscountID.Size = new System.Drawing.Size(158, 31);
+            this.txtDiscountID.TabIndex = 54;
+            // 
+            // SearchBtn
+            // 
+            this.SearchBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
+            this.SearchBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchBtn.ForeColor = System.Drawing.Color.White;
+            this.SearchBtn.Location = new System.Drawing.Point(1565, 301);
+            this.SearchBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.SearchBtn.Name = "SearchBtn";
+            this.SearchBtn.Size = new System.Drawing.Size(146, 48);
+            this.SearchBtn.TabIndex = 55;
+            this.SearchBtn.Text = "Search";
+            this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
             // Discount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1736, 904);
+            this.Controls.Add(this.SearchBtn);
+            this.Controls.Add(this.txtDiscountID);
             this.Controls.Add(this.txtProID);
             this.Controls.Add(this.numDisPercentage);
             this.Controls.Add(this.cmbDisType);
@@ -267,5 +292,7 @@
         private System.Windows.Forms.ComboBox cmbDisType;
         private System.Windows.Forms.NumericUpDown numDisPercentage;
         private System.Windows.Forms.TextBox txtProID;
+        private System.Windows.Forms.TextBox txtDiscountID;
+        private System.Windows.Forms.Button SearchBtn;
     }
 }
