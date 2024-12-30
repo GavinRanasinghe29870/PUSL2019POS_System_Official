@@ -78,15 +78,13 @@ namespace POS_System
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
-            //Checks if a row is selected
-            if(dgvDiscounts.CurrentRow == null)
+            //Validate DiscountID input
+            if(string.IsNullOrWhiteSpace(txtDiscountID.Text)|| !int.TryParse(txtDiscountID.Text, out int DiscountID))
+
             {
-                MessageBox.Show("Please select a discount to edit!");
+                MessageBox.Show("Please enter a valid Discount ID!");
                 return;
             }
-
-            //Gets DiscountID from the selected row
-            int DiscountID = Convert.ToInt32(dgvDiscounts.CurrentRow.Cells["DiscountID"].Value);
             
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -158,6 +156,45 @@ namespace POS_System
 
         }
 
+        private void LoadDiscountByID(int DiscountID)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
+
+            {
+                try
+                {
+                    //Query to fetch discound record by ID
+                    string query = "SELECT DiscType,DiscPercentage,ProductID,StartDate,EndDate FROM Discount WHERE DiscountID = @DiscountID";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@DiscountID", DiscountID);
+
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if(reader.Read())
+                    {
+                        // Populate the fields if the record is found
+                        cmbDisType.SelectedItem = reader["DiscType"].ToString();
+                        numDisPercentage.Value = Convert.ToDecimal(reader["DiscPercentage"]);
+                        txtProID.Text = reader["ProductID"].ToString();
+                        dtpStartDate.Value = Convert.ToDateTime(reader["StartDate"]);
+                        dtpEndDate.Value = Convert.ToDateTime(reader["EndDate"]);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record found with this ID");
+                    }
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error occured: " + ex.Message );
+                }
+            }
+        }
+
+        
+
         private void dgvDiscounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            //Ensure a valid row is selected
@@ -226,5 +263,19 @@ namespace POS_System
         {
 
         }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            // Validate DiscountID input
+            if (string.IsNullOrWhiteSpace(txtDiscountID.Text) || !int.TryParse(txtDiscountID.Text, out int DiscountID))
+            {
+                MessageBox.Show("Please enter a valid Discount ID.");
+                return;
+            }
+
+            // Load the discount record based on DiscountID
+            LoadDiscountByID(DiscountID);
+        }
     }
+    
 }
