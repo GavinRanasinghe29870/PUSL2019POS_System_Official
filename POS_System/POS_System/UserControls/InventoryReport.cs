@@ -72,7 +72,15 @@ namespace POS_System.UserControls
                         {
                             foreach (DataGridViewCell cell in row.Cells)
                             {
-                                pdfTable.AddCell(cell.Value.ToString());
+                                string cellValue = cell.Value.ToString();
+                                if (cell.ColumnIndex == 2 || cell.ColumnIndex == 4 || cell.ColumnIndex == 5) // 2nd and 5th columns (0-based index)
+                                {
+                                    if (decimal.TryParse(cellValue, out decimal number))
+                                    {
+                                        cellValue = number.ToString("#,##0");
+                                    }
+                                }
+                                pdfTable.AddCell(cellValue);
                             }
                         }
 
