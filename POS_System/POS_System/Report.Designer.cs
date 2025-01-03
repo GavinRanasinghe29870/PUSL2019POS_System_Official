@@ -39,9 +39,9 @@
             // 
             // pnlMain
             // 
-            this.pnlMain.Location = new System.Drawing.Point(0, 87);
+            this.pnlMain.Location = new System.Drawing.Point(4, 84);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(1047, 709);
+            this.pnlMain.Size = new System.Drawing.Size(1340, 640);
             this.pnlMain.TabIndex = 186;
             // 
             // panel3
@@ -54,15 +54,15 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1047, 70);
+            this.panel3.Size = new System.Drawing.Size(1350, 70);
             this.panel3.TabIndex = 185;
             // 
             // pnlSel
             // 
             this.pnlSel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
-            this.pnlSel.Location = new System.Drawing.Point(2, 64);
+            this.pnlSel.Location = new System.Drawing.Point(-2, 64);
             this.pnlSel.Name = "pnlSel";
-            this.pnlSel.Size = new System.Drawing.Size(345, 5);
+            this.pnlSel.Size = new System.Drawing.Size(450, 5);
             this.pnlSel.TabIndex = 61;
             // 
             // btnSMR
@@ -71,9 +71,9 @@
             this.btnSMR.FlatAppearance.BorderSize = 0;
             this.btnSMR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSMR.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSMR.Location = new System.Drawing.Point(696, 0);
+            this.btnSMR.Location = new System.Drawing.Point(897, 0);
             this.btnSMR.Name = "btnSMR";
-            this.btnSMR.Size = new System.Drawing.Size(350, 70);
+            this.btnSMR.Size = new System.Drawing.Size(450, 70);
             this.btnSMR.TabIndex = 2;
             this.btnSMR.Text = "INVENTORY REPORT";
             this.btnSMR.UseVisualStyleBackColor = false;
@@ -86,9 +86,9 @@
             this.btnCAR.FlatAppearance.BorderSize = 0;
             this.btnCAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCAR.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCAR.Location = new System.Drawing.Point(348, 0);
+            this.btnCAR.Location = new System.Drawing.Point(449, 0);
             this.btnCAR.Name = "btnCAR";
-            this.btnCAR.Size = new System.Drawing.Size(350, 70);
+            this.btnCAR.Size = new System.Drawing.Size(450, 70);
             this.btnCAR.TabIndex = 1;
             this.btnCAR.Text = "CUSTOMER ACTIVITY";
             this.btnCAR.UseVisualStyleBackColor = false;
@@ -101,9 +101,9 @@
             this.btnSR.FlatAppearance.BorderSize = 0;
             this.btnSR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSR.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSR.Location = new System.Drawing.Point(0, 0);
+            this.btnSR.Location = new System.Drawing.Point(1, 0);
             this.btnSR.Name = "btnSR";
-            this.btnSR.Size = new System.Drawing.Size(350, 70);
+            this.btnSR.Size = new System.Drawing.Size(450, 70);
             this.btnSR.TabIndex = 0;
             this.btnSR.Text = "SALES REPORT";
             this.btnSR.UseVisualStyleBackColor = false;
@@ -114,7 +114,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(236)))), ((int)(((byte)(234)))));
-            this.ClientSize = new System.Drawing.Size(1047, 797);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.panel3);
             this.Name = "Report";

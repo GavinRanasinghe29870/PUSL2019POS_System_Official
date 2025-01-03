@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS_System.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +38,7 @@ namespace POS_System
                 string Password = textBox2_login.Text;
                 string selectRole = comboBox1_login.SelectedItem.ToString();
 
-                string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                string connectionString = ConnectionString.constring;
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
