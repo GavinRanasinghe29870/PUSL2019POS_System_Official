@@ -185,6 +185,12 @@ namespace POS_System
 
         private void btnGenerateBill_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(textBoxCusID.Text, out int customerID))
+            {
+                MessageBox.Show("Please enter a valid Customer ID!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             string receipt = "Billing Receipt\n\nProducts:\n";
             decimal discount = GetDiscountFromDatabaseById(selectedDiscountId); // Get discount by ID
             decimal tax = subtotal * taxRate;
@@ -202,12 +208,12 @@ namespace POS_System
 
             MessageBox.Show(receipt, "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Save the sales data to the database
-            SaveSalesData(total, discount, tax, subtotal);
+            // Save the sales data to the database with CustomerID
+            SaveSalesData(total, discount, tax, subtotal, customerID);
         }
 
 
-        private void SaveSalesData(decimal total, decimal discount, decimal tax, decimal subtotal)
+        private void SaveSalesData(decimal total, decimal discount, decimal tax, decimal subtotal, int customerID)
         {
             try
             {
@@ -217,12 +223,13 @@ namespace POS_System
 
                     // Insert into Sales table
                     string insertSalesQuery = @"
-                INSERT INTO Sales (Subtotal, Discount, Tax, Total, Date)
+                INSERT INTO Sales (CustomerID, Subtotal, Discount, Tax, Total, Date)
                 OUTPUT INSERTED.SaleID
-                VALUES (@Subtotal, @Discount, @Tax, @Total, @Date)";
+                VALUES (@CustomerID, @Subtotal, @Discount, @Tax, @Total, @Date)";
                     int saleId;
                     using (SqlCommand cmd = new SqlCommand(insertSalesQuery, conn))
                     {
+                        cmd.Parameters.AddWithValue("@CustomerID", customerID);
                         cmd.Parameters.AddWithValue("@Subtotal", subtotal);
                         cmd.Parameters.AddWithValue("@Discount", discount);
                         cmd.Parameters.AddWithValue("@Tax", tax);
@@ -274,6 +281,17 @@ namespace POS_System
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxCusID_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CustomerM customerM = new CustomerM();
+            customerM.Show();
         }
     }
   
