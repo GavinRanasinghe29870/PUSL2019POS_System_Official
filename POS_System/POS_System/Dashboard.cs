@@ -32,16 +32,19 @@ namespace POS_System
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Discount Discount = new Discount();
-            Discount.Show();
-            this.Hide();
+            //Discount Discount = new Discount();
+            //Discount.Show();
+            userControl1Discount2.Show();
+            userControl1Report1.Hide();
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Report Report = new Report();
-            Report.Show();
-            this.Hide();
+            //Report Report = new Report();
+            //Report.Show();
+            userControl1Report1.Show();
+            userControl1Discount2.Hide();
         }
     }
 }

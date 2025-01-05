@@ -22,6 +22,7 @@ namespace POS_System.UserControls
 
         private void UserControl1CustomerM_Load(object sender, EventArgs e)
         {
+            this.Hide();
             LoadCustomerData();
         }
 

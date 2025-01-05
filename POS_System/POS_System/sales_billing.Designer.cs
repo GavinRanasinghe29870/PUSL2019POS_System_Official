@@ -35,6 +35,9 @@ namespace POS_System
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.btnGenerateBill = new System.Windows.Forms.Button();
+            this.textBoxCusID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +52,7 @@ namespace POS_System
             // 
             // numericDiscount
             // 
-            this.numericDiscount.Location = new System.Drawing.Point(16, 63);
+            this.numericDiscount.Location = new System.Drawing.Point(16, 54);
             this.numericDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.numericDiscount.Name = "numericDiscount";
             this.numericDiscount.Size = new System.Drawing.Size(265, 22);
@@ -147,11 +150,43 @@ namespace POS_System
             this.btnGenerateBill.UseVisualStyleBackColor = false;
             this.btnGenerateBill.Click += new System.EventHandler(this.btnGenerateBill_Click);
             // 
+            // textBoxCusID
+            // 
+            this.textBoxCusID.Location = new System.Drawing.Point(119, 91);
+            this.textBoxCusID.Name = "textBoxCusID";
+            this.textBoxCusID.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCusID.TabIndex = 10;
+            this.textBoxCusID.TextChanged += new System.EventHandler(this.textBoxCusID_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CustomerID";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(882, 42);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 42);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Add Customer";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // sales_billing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxCusID);
             this.Controls.Add(this.btnGenerateBill);
             this.Controls.Add(this.btnRemoveProduct);
             this.Controls.Add(this.btnAddProduct);
@@ -198,6 +233,10 @@ namespace POS_System
                 MessageBox.Show($"Cell clicked: {dgvCart.Rows[e.RowIndex].Cells[e.ColumnIndex].Value}");
             }
         }
+
+        private TextBox textBoxCusID;
+        private Label label1;
+        private Button button1;
     }
 
 }

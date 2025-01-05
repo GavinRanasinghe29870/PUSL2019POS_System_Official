@@ -1,4 +1,5 @@
-﻿using POS_System;
+﻿using Org.BouncyCastle.Bcpg;
+using POS_System;
 using POS_System.Classes;
 using System;
 using System.Data;
@@ -26,18 +27,19 @@ namespace StockManagement
             {
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
-                    string query = "INSERT INTO Products (ProductName, Quantity, Price, Category) VALUES (@ProductName, @Quantity, @Price, @Category)";
+                    string query = "INSERT INTO Products (ProductName, UserID, Quantity, Price, Category) VALUES (@ProductName, @UserID, @Quantity, @Price, @Category)";
                     using (SqlCommand cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@ProductName", textBox1.Text);
-                        cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox2.Text)); // Ensure proper conversion
-                        cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox3.Text)); // Ensure proper conversion
+                        cmd.Parameters.AddWithValue("@UserID", Login.loggedUser);
+                        cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox2.Text)); 
+                        cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox3.Text)); 
                         cmd.Parameters.AddWithValue("@Category", textBox4.Text);
 
                         con.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Product added successfully!");
-                        LoadData(); // Refresh the data grid view
+                        LoadData(); 
                     }
                 }
             }
@@ -254,6 +256,16 @@ namespace StockManagement
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxuID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
