@@ -10,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-namespace POS_System
+namespace POS_System.UserControls
 {
-    public partial class Discount : Form
+    public partial class UserControl1Discount : UserControl
     {
-        private string connectionString = @"Data Source=Vihanga\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-        public Discount()
+        //private string connectionString = @"Data Source=Vihanga\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+        private string connectionString = ConnectionString.constring;
+        public UserControl1Discount()
         {
             InitializeComponent();
             LoadDiscount();
@@ -31,10 +31,9 @@ namespace POS_System
             dtpStartDate.Value = DateTime.Now;//Reset Start Date
             dtpEndDate.Value = DateTime.Now;//Reset End Date
         }
-       
+
         private void AddBtn_Click(object sender, EventArgs e)
         {
-           
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -73,19 +72,16 @@ namespace POS_System
             }
         }
 
-
-
-
         private void EditBtn_Click(object sender, EventArgs e)
         {
             //Validate DiscountID input
-            if(string.IsNullOrWhiteSpace(txtDiscountID.Text)|| !int.TryParse(txtDiscountID.Text, out int DiscountID))
+            if (string.IsNullOrWhiteSpace(txtDiscountID.Text) || !int.TryParse(txtDiscountID.Text, out int DiscountID))
 
             {
                 MessageBox.Show("Please enter a valid Discount ID!");
                 return;
             }
-            
+
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 try
@@ -124,8 +120,8 @@ namespace POS_System
                     MessageBox.Show("Error Occurred " + ex.Message);
                 }
             }
-           
         }
+
         private void LoadDiscount()
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -147,13 +143,18 @@ namespace POS_System
                     // Adjust column widths for better display
                     dgvDiscounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
-        
+
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error " + ex.Message);
                 }
             }
 
+        }
+
+        private void UserControl1Discount_Load(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
         private void LoadDiscountByID(int DiscountID)
@@ -171,7 +172,7 @@ namespace POS_System
                     conn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    if(reader.Read())
+                    if (reader.Read())
                     {
                         // Populate the fields if the record is found
                         cmbDisType.SelectedItem = reader["DiscType"].ToString();
@@ -188,17 +189,15 @@ namespace POS_System
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error occured: " + ex.Message );
+                    MessageBox.Show("Error occured: " + ex.Message);
                 }
             }
         }
 
-        
-
         private void dgvDiscounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           //Ensure a valid row is selected
-           if(e.RowIndex >= 0)
+            //Ensure a valid row is selected
+            if (e.RowIndex >= 0)
             {
                 //Get the selected row
                 DataGridViewRow row = dgvDiscounts.Rows[e.RowIndex];
@@ -214,8 +213,8 @@ namespace POS_System
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
-           
-            if(dgvDiscounts.CurrentRow == null)
+
+            if (dgvDiscounts.CurrentRow == null)
             {
                 MessageBox.Show("Please select a discount to delete !");
                 return;
@@ -225,7 +224,7 @@ namespace POS_System
 
             DialogResult confirmResult = MessageBox.Show("Are you sure you want to delete this discount?", "Confirm Delete", MessageBoxButtons.YesNo);
 
-            if(confirmResult == DialogResult.Yes)
+            if (confirmResult == DialogResult.Yes)
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -250,18 +249,8 @@ namespace POS_System
                         MessageBox.Show("Error " + ex.Message);
                     }
                 }
-                
+
             }
-        }
-
-        private void dgvDiscounts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void Discount_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void SearchBtn_Click(object sender, EventArgs e)
@@ -277,5 +266,4 @@ namespace POS_System
             LoadDiscountByID(DiscountID);
         }
     }
-    
 }
