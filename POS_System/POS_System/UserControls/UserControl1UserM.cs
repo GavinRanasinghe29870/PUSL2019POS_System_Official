@@ -143,11 +143,16 @@ namespace POS_System.UserControls
 
         private void ClearFields()
         {
-            Uid.Clear();
+            //Uid.Clear();
             Uname.Clear();
             Upassword.Clear();
             Uemail.Clear();
             Utype.Clear();
+        }
+
+        private void UserControl1UserM_Load(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
