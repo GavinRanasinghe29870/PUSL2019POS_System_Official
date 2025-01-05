@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS_System.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,30 +9,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
-namespace POS_System
+namespace POS_System.UserControls
 {
-    public partial class CustomerM : Form
-
+    public partial class UserControl1CustomerM : UserControl
     {
-      private  string connectionString = @"Data Source=DESKTOP-P4B5KHI\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
-
-        public CustomerM()
+        private string connectionString = ConnectionString.constring;
+        public UserControl1CustomerM()
         {
             InitializeComponent();
-
-            
         }
 
-        private void CustomerM_Load(object sender, EventArgs e)
+        private void UserControl1CustomerM_Load(object sender, EventArgs e)
         {
             LoadCustomerData();
         }
 
         private void btnSaveCus_Click(object sender, EventArgs e)
         {
-
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 try
@@ -49,11 +44,11 @@ namespace POS_System
                     if (count > 0)
                     {
                         MessageBox.Show("This email already exists. Please use a different email.");
-                        return; 
+                        return;
                     }
 
                     // Determine if INSERT or UPDATE
-                    if (string.IsNullOrEmpty(txtSearch.Text.Trim())) 
+                    if (string.IsNullOrEmpty(txtSearch.Text.Trim()))
                     {
                         // INSERT Query
                         string insertQuery = "INSERT INTO Customer (FullName, Email, Phone) VALUES (@FullName, @Email, @Phone)";
@@ -61,7 +56,7 @@ namespace POS_System
                         insertCommand.Parameters.AddWithValue("@FullName", txtName.Text.Trim());
                         insertCommand.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                         insertCommand.Parameters.AddWithValue("@Phone", txtContactInf.Text.Trim());
-                       
+
 
                         int rowsInserted = insertCommand.ExecuteNonQuery();
 
@@ -74,9 +69,9 @@ namespace POS_System
                             MessageBox.Show("Failed to add new customer.");
                         }
                     }
-                    else 
+                    else
                     {
-                        
+
                         string updateQuery = "UPDATE Customer SET FullName = @FullName, Email = @Email, Phone = @Phone WHERE CustomerID = @CustomerID";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
                         updateCommand.Parameters.AddWithValue("@CustomerID", Convert.ToInt32(txtSearch.Text.Trim()));
@@ -96,7 +91,7 @@ namespace POS_System
                         }
                     }
 
-                    
+
                     LoadCustomerData();
                 }
                 catch (Exception ex)
@@ -108,18 +103,16 @@ namespace POS_System
 
         private void btnClearCus_Click(object sender, EventArgs e)
         
-            {
+        {
                 ClearFields();
-            }
+        }
 
-            private void ClearFields()
-            {
-                txtName.Text = string.Empty;
-                txtEmail.Text = string.Empty;
+        private void ClearFields()
+        {
+            txtName.Text = string.Empty;
+            txtEmail.Text = string.Empty;
             txtContactInf.Text = string.Empty;
-            }
-
-
+        }
 
         private void btnSearchCus_Click(object sender, EventArgs e)
         {
@@ -154,7 +147,6 @@ namespace POS_System
             }
         }
 
-
         private void btnDeleteCus_Click(object sender, EventArgs e)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -184,12 +176,11 @@ namespace POS_System
                 }
             }
         }
-    
 
         private void btnEditCus_Click(object sender, EventArgs e)
-    {
-        using (SqlConnection connection = new SqlConnection(connectionString))
         {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
                 txtName.Enabled = true;
                 txtEmail.Enabled = true;
                 txtContactInf.Enabled = true;
@@ -197,6 +188,7 @@ namespace POS_System
                 MessageBox.Show("You can now edit the customer details. Click Save after editing.");
             }
         }
+
         private void LoadCustomerData()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -216,17 +208,6 @@ namespace POS_System
                 }
             }
         }
-    
-
-
-    private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void txtContactInf_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
+    
 }

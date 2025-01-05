@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS_System.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -37,7 +38,7 @@ namespace POS_System
                 string Password = textBox2_login.Text;
                 string selectRole = comboBox1_login.SelectedItem.ToString();
 
-                string connectionString = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+                string connectionString = ConnectionString.constring;
 
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
@@ -45,8 +46,11 @@ namespace POS_System
                     {
                         conn.Open();
 
-                        string query = $"SELECT * FROM Users WHERE UserName = '{Username}' AND Passwords = '{Password}' AND UserType = '{selectRole}'";
+                        string query = $"SELECT * FROM Users WHERE UserName =  @Username AND Passwords = @Passwords AND UserType = @UserType";
                         SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@Username", Username);
+                        cmd.Parameters.AddWithValue("@Passwords", Password);
+                        cmd.Parameters.AddWithValue("@UserType", selectRole);
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         if (reader.HasRows)
@@ -59,7 +63,7 @@ namespace POS_System
                             }
                             else if (selectRole == "Admin")
                             {
-                                CustomerM customerM = new CustomerM();
+                                Dashboard customerM = new Dashboard();
                                 customerM.Show();
                                 this.Hide();
                             }
