@@ -213,6 +213,24 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControls\UserControl1CustomerM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl1CustomerM.Designer.cs">
+      <DependentUpon>UserControl1CustomerM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControl1Discount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl1Discount.Designer.cs">
+      <DependentUpon>UserControl1Discount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControl1Report.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl1Report.Designer.cs">
+      <DependentUpon>UserControl1Report.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CustomerM.resx">
       <DependentUpon>CustomerM.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +240,9 @@
     <EmbeddedResource Include="Discount.resx">
       <DependentUpon>Discount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -230,6 +251,12 @@
     </Compile>
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="stockManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stockManagement.Designer.cs">
+      <DependentUpon>stockManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CustomerActivityReport.cs">
       <SubType>UserControl</SubType>
@@ -264,6 +291,11 @@
     <EmbeddedResource Include="sales_billing.resx">
       <DependentUpon>sales_billing.cs</DependentUpon>
     </EmbeddedResource>
+
+    <EmbeddedResource Include="stockManagement.resx">
+      <DependentUpon>stockManagement.cs</DependentUpon>
+    </EmbeddedResource>
+
     <EmbeddedResource Include="UserControls\CustomerActivityReport.resx">
       <DependentUpon>CustomerActivityReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +304,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl1CustomerM.resx">
+      <DependentUpon>UserControl1CustomerM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl1Discount.resx">
+      <DependentUpon>UserControl1Discount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl1Report.resx">
+      <DependentUpon>UserControl1Report.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

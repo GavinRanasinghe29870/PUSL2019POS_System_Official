@@ -125,9 +125,9 @@
             this.label1_login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.label1_login.Location = new System.Drawing.Point(253, 74);
             this.label1_login.Name = "label1_login";
-            this.label1_login.Size = new System.Drawing.Size(581, 76);
+            this.label1_login.Size = new System.Drawing.Size(586, 76);
             this.label1_login.TabIndex = 8;
-            this.label1_login.Text = "Dew SuperMarket";
+            this.label1_login.Text = "ABC SuperMarket";
             // 
             // Login
             // 
