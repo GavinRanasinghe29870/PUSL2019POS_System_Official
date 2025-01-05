@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +19,6 @@ namespace POS_System
             Application.SetCompatibleTextRenderingDefault(false);
 
             Application.Run(new Login());
-
         }
     }
 }
