@@ -154,7 +154,7 @@ namespace POS_System.UserControls
 
         private void UserControl1Discount_Load(object sender, EventArgs e)
         {
-            
+            this.Hide();
         }
 
         private void LoadDiscountByID(int DiscountID)
