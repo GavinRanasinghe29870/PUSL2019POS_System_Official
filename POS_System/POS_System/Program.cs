@@ -1,4 +1,5 @@
-﻿using System;
+﻿using StockManagement;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +18,11 @@ namespace POS_System
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            Application.Run(new MainForm());
+
+
             Application.Run(new sales_billing());
+
 
         }
     }
