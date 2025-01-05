@@ -293,6 +293,13 @@ namespace POS_System
             CustomerM customerM = new CustomerM();
             customerM.Show();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+        }
     }
   
 
