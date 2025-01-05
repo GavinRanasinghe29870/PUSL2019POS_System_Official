@@ -181,6 +181,12 @@
     <Compile Include="CustomerM.Designer.cs">
       <DependentUpon>CustomerM.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Discount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="CustomerM.resx">
       <DependentUpon>CustomerM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Discount.resx">
       <DependentUpon>Discount.cs</DependentUpon>
@@ -261,9 +270,11 @@
     <EmbeddedResource Include="sales_billing.resx">
       <DependentUpon>sales_billing.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="stockManagement.resx">
       <DependentUpon>stockManagement.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="UserControls\CustomerActivityReport.resx">
       <DependentUpon>CustomerActivityReport.cs</DependentUpon>
     </EmbeddedResource>

@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using POS_System.Classes;
+using System.Data.SqlClient;
 
 namespace POS_System.UserControls
 {
@@ -55,6 +57,7 @@ namespace POS_System.UserControls
                         pdfTable.HorizontalAlignment = Element.ALIGN_CENTER;
 
                         iTextSharp.text.Font headerFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 10f, BaseColor.WHITE);
+                        iTextSharp.text.Font dataFont = FontFactory.GetFont(FontFactory.HELVETICA, 10f, BaseColor.BLACK);
 
                         foreach (DataGridViewColumn column in dataGridViewSales.Columns)
                         {
@@ -72,13 +75,20 @@ namespace POS_System.UserControls
                         {
                             foreach (DataGridViewCell cell in row.Cells)
                             {
-                                pdfTable.AddCell(cell.Value.ToString());
+                                if (cell.Value is DateTime)
+                                {
+                                    pdfTable.AddCell(new Phrase(((DateTime)cell.Value).ToString("dd/MM/yyyy"), dataFont));
+                                }
+                                else
+                                {
+                                    pdfTable.AddCell(new Phrase(cell.Value.ToString(), dataFont));
+                                }
                             }
                         }
 
                         using (FileStream stream = new FileStream(sfd.FileName, FileMode.Create))
                         {
-                            Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                            Document pdfDoc = new Document(new iTextSharp.text.Rectangle(PageSize.A4.Height, PageSize.A4.Width), 10f, 10f, 10f, 0f);
                             PdfWriter.GetInstance(pdfDoc, stream);
                             pdfDoc.Open();
 
@@ -129,6 +139,113 @@ namespace POS_System.UserControls
                         MessageBox.Show("Error :" + ex.Message);
                     }
                 }
+            }
+        }
+
+        private void SalesReport_Load(object sender, EventArgs e)
+        {
+            dtFrom.Value = DateTime.Today;
+            dtTo.Value = DateTime.Today;
+
+            string conString = ConnectionString.constring;
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    if (cn.State == ConnectionState.Closed)
+                        cn.Open();
+                    using (DataTable dt = new DataTable("Sales"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesVIew WHERE CAST(SaleDate AS DATE) = CAST(GETDATE() AS DATE)", cn))
+                        {
+                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                            adapter.Fill(dt);
+
+                            
+
+                            dataGridViewSales.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string conString = ConnectionString.constring;
+            try
+            {
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    if (cn.State == ConnectionState.Closed)
+                        cn.Open();
+
+                    using (DataTable dt = new DataTable())
+                    {
+                        // Get the selected date from the date pickers
+                        DateTime fromDate = dtFrom.Value.Date;
+                        DateTime toDate = dtTo.Value.Date.AddDays(1).AddSeconds(-1);
+
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesView WHERE SaleDate BETWEEN @fromDate AND @toDate", cn))
+                        {
+                            // Add parameters for date range
+                            cmd.Parameters.AddWithValue("@fromDate", fromDate);
+                            cmd.Parameters.AddWithValue("@toDate", toDate);
+
+                            // Fill data into DataTable
+                            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(cmd);
+                            sqlDataAdapter.Fill(dt);
+
+                            if (dt.Rows.Count == 0)
+                            {
+                                MessageBox.Show("No sales records found for the selected date.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+
+                            dataGridViewSales.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnViewToday_Click(object sender, EventArgs e)
+        {
+            string conString = ConnectionString.constring;
+            try
+            {
+                dtFrom.Value = DateTime.Now;
+                dtTo.Value = DateTime.Now;
+
+                using (SqlConnection cn = new SqlConnection(conString))
+                {
+                    if (cn.State == ConnectionState.Closed)
+                        cn.Open();
+                    using (DataTable dt = new DataTable("Sales"))
+                    {
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesVIew WHERE CAST(SaleDate AS DATE) = CAST(GETDATE() AS DATE)", cn))
+                        {
+                            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                            adapter.Fill(dt);
+
+
+
+                            dataGridViewSales.DataSource = dt;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
