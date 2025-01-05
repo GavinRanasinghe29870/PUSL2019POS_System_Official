@@ -49,6 +49,7 @@
             this.button1_login.TabIndex = 15;
             this.button1_login.Text = "Log In";
             this.button1_login.UseVisualStyleBackColor = false;
+            this.button1_login.Click += new System.EventHandler(this.button1_login_Click);
             // 
             // textBox2_login
             // 
@@ -78,6 +79,7 @@
             this.textBox1_login.Name = "textBox1_login";
             this.textBox1_login.Size = new System.Drawing.Size(281, 34);
             this.textBox1_login.TabIndex = 12;
+            this.textBox1_login.TextChanged += new System.EventHandler(this.textBox1_login_TextChanged);
             // 
             // label3_login
             // 
@@ -123,9 +125,9 @@
             this.label1_login.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.label1_login.Location = new System.Drawing.Point(253, 74);
             this.label1_login.Name = "label1_login";
-            this.label1_login.Size = new System.Drawing.Size(581, 76);
+            this.label1_login.Size = new System.Drawing.Size(586, 76);
             this.label1_login.TabIndex = 8;
-            this.label1_login.Text = "Dew SuperMarket";
+            this.label1_login.Text = "ABC SuperMarket";
             // 
             // Login
             // 

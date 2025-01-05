@@ -18,3 +18,5 @@ obj/
 *.csproj.CoreCompileInputs.cache
 
 *.tmp
+
+POS_System/Classes/ConnectionString.cs
