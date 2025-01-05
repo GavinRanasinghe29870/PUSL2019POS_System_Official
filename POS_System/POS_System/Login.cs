@@ -63,7 +63,7 @@ namespace POS_System
                             }
                             else if (selectRole == "Admin")
                             {
-                                Form1 customerM = new Form1();
+                                Dashboard customerM = new Dashboard();
                                 customerM.Show();
                                 this.Hide();
                             }
