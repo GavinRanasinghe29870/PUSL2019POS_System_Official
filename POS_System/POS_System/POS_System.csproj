@@ -174,9 +174,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="Classes\ConnectionString.cs" />
-
     <Compile Include="CustomerM.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,7 +187,6 @@
     <Compile Include="Discount.Designer.cs">
       <DependentUpon>Discount.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,14 +207,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <EmbeddedResource Include="CustomerM.resx">
       <DependentUpon>CustomerM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Discount.resx">
       <DependentUpon>Discount.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +221,12 @@
     </Compile>
     <Compile Include="Report.Designer.cs">
       <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="stockManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="stockManagement.Designer.cs">
+      <DependentUpon>stockManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\CustomerActivityReport.cs">
       <SubType>UserControl</SubType>
@@ -257,11 +258,12 @@
     <EmbeddedResource Include="Report.resx">
       <DependentUpon>Report.cs</DependentUpon>
     </EmbeddedResource>
-
-<EmbeddedResource Include="sales_billing.resx">
-  <DependentUpon>sales_billing.cs</DependentUpon>
-</EmbeddedResource>
-
+    <EmbeddedResource Include="sales_billing.resx">
+      <DependentUpon>sales_billing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="stockManagement.resx">
+      <DependentUpon>stockManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\CustomerActivityReport.resx">
       <DependentUpon>CustomerActivityReport.cs</DependentUpon>
     </EmbeddedResource>
