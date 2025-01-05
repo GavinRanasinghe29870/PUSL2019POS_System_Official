@@ -46,8 +46,11 @@ namespace POS_System
                     {
                         conn.Open();
 
-                        string query = $"SELECT * FROM Users WHERE UserName = '{Username}' AND Passwords = '{Password}' AND UserType = '{selectRole}'";
+                        string query = $"SELECT * FROM Users WHERE UserName =  @Username AND Passwords = @Passwords AND UserType = @UserType";
                         SqlCommand cmd = new SqlCommand(query, conn);
+                        cmd.Parameters.AddWithValue("@Username", Username);
+                        cmd.Parameters.AddWithValue("@Passwords", Password);
+                        cmd.Parameters.AddWithValue("@UserType", selectRole);
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         if (reader.HasRows)
@@ -60,7 +63,7 @@ namespace POS_System
                             }
                             else if (selectRole == "Admin")
                             {
-                                CustomerM customerM = new CustomerM();
+                                Form1 customerM = new Form1();
                                 customerM.Show();
                                 this.Hide();
                             }
