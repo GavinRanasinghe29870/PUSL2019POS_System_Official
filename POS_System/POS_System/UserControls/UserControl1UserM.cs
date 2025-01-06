@@ -35,9 +35,10 @@ namespace POS_System.UserControls
 
         private void add_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Uid.Text) || string.IsNullOrEmpty(Uname.Text) ||
-    string.IsNullOrEmpty(Upassword.Text) || string.IsNullOrEmpty(Uemail.Text) ||
-    string.IsNullOrEmpty(Utype.Text))
+            if (string.IsNullOrEmpty(Uname.Text) ||
+                string.IsNullOrEmpty(Upassword.Text) ||
+                string.IsNullOrEmpty(Uemail.Text) ||
+                string.IsNullOrEmpty(Utype.Text))
             {
                 MessageBox.Show("Please fill all fields.");
                 return;
@@ -48,7 +49,6 @@ namespace POS_System.UserControls
             {
                 SqlCommand cmd = new SqlCommand("AddUser", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@UserID", int.Parse(Uid.Text));
                 cmd.Parameters.AddWithValue("@UserName", Uname.Text);
                 cmd.Parameters.AddWithValue("@Password", Upassword.Text);
                 cmd.Parameters.AddWithValue("@Email", Uemail.Text);
@@ -66,9 +66,18 @@ namespace POS_System.UserControls
 
         private void update_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Uid.Text))
+            if (string.IsNullOrEmpty(Uname.Text) ||
+                string.IsNullOrEmpty(Upassword.Text) ||
+                string.IsNullOrEmpty(Uemail.Text) ||
+                string.IsNullOrEmpty(Utype.Text))
             {
-                MessageBox.Show("Please enter a User ID to update.");
+                MessageBox.Show("Please fill all fields.");
+                return;
+            }
+
+            if (dataView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a row to update.");
                 return;
             }
 
@@ -77,45 +86,54 @@ namespace POS_System.UserControls
             {
                 SqlCommand cmd = new SqlCommand("UpdateUser", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@UserID", int.Parse(Uid.Text));
                 cmd.Parameters.AddWithValue("@UserName", Uname.Text);
                 cmd.Parameters.AddWithValue("@Password", Upassword.Text);
                 cmd.Parameters.AddWithValue("@Email", Uemail.Text);
                 cmd.Parameters.AddWithValue("@UserType", Utype.Text);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("User updated successfully.");
+                    LoadUserData();
+                    ClearFields();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
-
-            MessageBox.Show("User updated successfully!");
-            LoadUserData();
-            ClearFields();
         }
 
         private void remove_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Uid.Text))
+            if (dataView.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Please enter a User ID to remove.");
+                MessageBox.Show("Please select a row to remove.");
                 return;
             }
 
+            string query = "DELETE FROM Users WHERE UserID = @UserID";
+
             string conString = ConnectionString.constring;
-            using (SqlConnection conn = new SqlConnection(conString))
+            using (SqlConnection connection = new SqlConnection(conString))
             {
-                string query = "DELETE FROM Users WHERE UserID = @UserID";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@UserID", int.Parse(Uid.Text));
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@UserID", dataView.SelectedRows[0].Cells[0].Value);
 
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                try
+                {
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("User removed successfully.");
+                    LoadUserData();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
-
-            MessageBox.Show("User removed successfully!");
-            LoadUserData();
-            ClearFields();
         }
 
         private void clear_Click(object sender, EventArgs e)
@@ -125,11 +143,16 @@ namespace POS_System.UserControls
 
         private void ClearFields()
         {
-            Uid.Clear();
+            //Uid.Clear();
             Uname.Clear();
             Upassword.Clear();
             Uemail.Clear();
             Utype.Clear();
+        }
+
+        private void UserControl1UserM_Load(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
