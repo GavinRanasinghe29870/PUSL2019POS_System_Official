@@ -73,7 +73,7 @@ namespace POS_System.UserControls
                             foreach (DataGridViewCell cell in row.Cells)
                             {
                                 string cellValue = cell.Value.ToString();
-                                if (cell.ColumnIndex == 2 || cell.ColumnIndex == 3 ) // 2nd and 5th columns (0-based index)
+                                if (cell.ColumnIndex == 2 || cell.ColumnIndex == 3) // 2nd and 5th columns (0-based index)
                                 {
                                     if (decimal.TryParse(cellValue, out decimal number))
                                     {
@@ -135,9 +135,9 @@ namespace POS_System.UserControls
                 {
                     if (cn.State == ConnectionState.Closed)
                         cn.Open();
-                    using (DataTable dt = new DataTable("____"))
+                    using (DataTable dt = new DataTable("CustomerActivityView"))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM ____", cn))
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM CustomerActivityView", cn))
                         {
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                             adapter.Fill(dt);
@@ -165,9 +165,9 @@ namespace POS_System.UserControls
                 {
                     if (cn.State == ConnectionState.Closed)
                         cn.Open();
-                    using (DataTable dt = new DataTable("____"))
+                    using (DataTable dt = new DataTable("CustomerActivityView"))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM ____ WHERE CustomerID=@CustomerID", cn))
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM CustomerActivityView WHERE CustomerID=@CustomerID", cn))
                         {
                             cmd.Parameters.AddWithValue("@CustomerID", txtSearch.Text);
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -204,9 +204,9 @@ namespace POS_System.UserControls
                 {
                     if (cn.State == ConnectionState.Closed)
                         cn.Open();
-                    using (DataTable dt = new DataTable("____"))
+                    using (DataTable dt = new DataTable("CustomerActivityView"))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM ____", cn))
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM CustomerActivityView", cn))
                         {
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                             adapter.Fill(dt);

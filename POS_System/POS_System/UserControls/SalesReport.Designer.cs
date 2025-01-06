@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnViewToday = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -44,20 +45,37 @@
             this.dataGridViewSales = new System.Windows.Forms.DataGridView();
             this.saleID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiscPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FinalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPDF = new System.Windows.Forms.Button();
-            this.btnViewToday = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSales)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnViewToday
+            // 
+            this.btnViewToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
+            this.btnViewToday.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewToday.FlatAppearance.BorderSize = 0;
+            this.btnViewToday.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(170)))), ((int)(((byte)(149)))));
+            this.btnViewToday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(170)))), ((int)(((byte)(149)))));
+            this.btnViewToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewToday.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewToday.ForeColor = System.Drawing.Color.White;
+            this.btnViewToday.Location = new System.Drawing.Point(20, 138);
+            this.btnViewToday.Name = "btnViewToday";
+            this.btnViewToday.Size = new System.Drawing.Size(180, 31);
+            this.btnViewToday.TabIndex = 203;
+            this.btnViewToday.Text = "View Today\'s Sales Record";
+            this.btnViewToday.UseVisualStyleBackColor = false;
+            this.btnViewToday.Click += new System.EventHandler(this.btnViewToday_Click);
             // 
             // panel2
             // 
@@ -67,7 +85,7 @@
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(454, 73);
-            this.panel2.TabIndex = 196;
+            this.panel2.TabIndex = 202;
             // 
             // label5
             // 
@@ -89,10 +107,10 @@
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(333, 106);
+            this.panel1.Location = new System.Drawing.Point(283, 106);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(987, 63);
-            this.panel1.TabIndex = 195;
+            this.panel1.Size = new System.Drawing.Size(961, 63);
+            this.panel1.TabIndex = 201;
             // 
             // dtTo
             // 
@@ -101,7 +119,7 @@
             this.dtTo.CustomFormat = "dddd, dd/MM/yyyy";
             this.dtTo.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTo.Location = new System.Drawing.Point(520, 15);
+            this.dtTo.Location = new System.Drawing.Point(496, 15);
             this.dtTo.Margin = new System.Windows.Forms.Padding(2);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(285, 31);
@@ -114,7 +132,7 @@
             this.dtFrom.CustomFormat = "dddd, dd/MM/yyyy";
             this.dtFrom.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFrom.Location = new System.Drawing.Point(132, 15);
+            this.dtFrom.Location = new System.Drawing.Point(114, 15);
             this.dtFrom.Margin = new System.Windows.Forms.Padding(2);
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(285, 31);
@@ -130,7 +148,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(822, 15);
+            this.btnSearch.Location = new System.Drawing.Point(798, 15);
             this.btnSearch.Margin = new System.Windows.Forms.Padding(1);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Padding = new System.Windows.Forms.Padding(9, 0, 0, 0);
@@ -146,7 +164,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(236)))), ((int)(((byte)(234)))));
-            this.label2.Location = new System.Drawing.Point(465, 18);
+            this.label2.Location = new System.Drawing.Point(441, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 23);
             this.label2.TabIndex = 164;
@@ -171,7 +189,7 @@
             this.label1.Location = new System.Drawing.Point(221, -3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(15, 21);
-            this.label1.TabIndex = 194;
+            this.label1.TabIndex = 200;
             this.label1.Text = "-";
             // 
             // dataGridViewSales
@@ -180,61 +198,61 @@
             this.dataGridViewSales.AllowUserToDeleteRows = false;
             this.dataGridViewSales.AllowUserToResizeColumns = false;
             this.dataGridViewSales.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
-            this.dataGridViewSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewSales.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewSales.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewSales.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dataGridViewSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 10, 0, 10);
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.saleID,
             this.customerID,
-            this.productID,
-            this.ProductName,
+            this.pName,
             this.date,
             this.quantity,
             this.Price,
             this.TotalPrice,
-            this.DiscPercentage,
+            this.tax,
+            this.discount,
             this.FinalPrice});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSales.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewSales.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewSales.EnableHeadersVisualStyles = false;
             this.dataGridViewSales.Location = new System.Drawing.Point(20, 178);
             this.dataGridViewSales.Name = "dataGridViewSales";
             this.dataGridViewSales.ReadOnly = true;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(151)))), ((int)(((byte)(178)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(151)))), ((int)(((byte)(178)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewSales.RowHeadersVisible = false;
             this.dataGridViewSales.RowHeadersWidth = 62;
-            this.dataGridViewSales.Size = new System.Drawing.Size(1300, 419);
-            this.dataGridViewSales.TabIndex = 193;
+            this.dataGridViewSales.Size = new System.Drawing.Size(1224, 419);
+            this.dataGridViewSales.TabIndex = 199;
             // 
             // saleID
             // 
@@ -254,27 +272,18 @@
             this.customerID.ReadOnly = true;
             this.customerID.Width = 130;
             // 
-            // productID
+            // pName
             // 
-            this.productID.DataPropertyName = "ProductID";
-            this.productID.HeaderText = "Product ID";
-            this.productID.MinimumWidth = 8;
-            this.productID.Name = "productID";
-            this.productID.ReadOnly = true;
-            this.productID.Width = 120;
-            // 
-            // ProductName
-            // 
-            this.ProductName.DataPropertyName = "ProductName";
-            this.ProductName.HeaderText = "Product Name";
-            this.ProductName.MinimumWidth = 8;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            this.ProductName.Width = 250;
+            this.pName.DataPropertyName = "ProductName";
+            this.pName.HeaderText = "Product Name";
+            this.pName.MinimumWidth = 8;
+            this.pName.Name = "pName";
+            this.pName.ReadOnly = true;
+            this.pName.Width = 230;
             // 
             // date
             // 
-            this.date.DataPropertyName = "SaleDate";
+            this.date.DataPropertyName = "Date";
             this.date.HeaderText = "Date";
             this.date.MinimumWidth = 8;
             this.date.Name = "date";
@@ -282,7 +291,7 @@
             // 
             // quantity
             // 
-            this.quantity.DataPropertyName = "SaleQuantity";
+            this.quantity.DataPropertyName = "Quantity";
             this.quantity.HeaderText = "Quantity";
             this.quantity.MinimumWidth = 8;
             this.quantity.Name = "quantity";
@@ -291,7 +300,7 @@
             // 
             // Price
             // 
-            this.Price.DataPropertyName = "Price";
+            this.Price.DataPropertyName = "UnitPrice";
             this.Price.HeaderText = "Unit Price";
             this.Price.MinimumWidth = 8;
             this.Price.Name = "Price";
@@ -305,16 +314,25 @@
             this.TotalPrice.MinimumWidth = 8;
             this.TotalPrice.Name = "TotalPrice";
             this.TotalPrice.ReadOnly = true;
-            this.TotalPrice.Width = 183;
+            this.TotalPrice.Width = 173;
             // 
-            // DiscPercentage
+            // tax
             // 
-            this.DiscPercentage.DataPropertyName = "DiscPercentage";
-            this.DiscPercentage.HeaderText = "Discount";
-            this.DiscPercentage.MinimumWidth = 8;
-            this.DiscPercentage.Name = "DiscPercentage";
-            this.DiscPercentage.ReadOnly = true;
-            this.DiscPercentage.Width = 70;
+            this.tax.DataPropertyName = "Tax";
+            this.tax.HeaderText = "Tax";
+            this.tax.MinimumWidth = 8;
+            this.tax.Name = "tax";
+            this.tax.ReadOnly = true;
+            this.tax.Width = 70;
+            // 
+            // discount
+            // 
+            this.discount.DataPropertyName = "Discount";
+            this.discount.HeaderText = "Discount";
+            this.discount.MinimumWidth = 8;
+            this.discount.Name = "discount";
+            this.discount.ReadOnly = true;
+            this.discount.Width = 70;
             // 
             // FinalPrice
             // 
@@ -323,7 +341,7 @@
             this.FinalPrice.MinimumWidth = 8;
             this.FinalPrice.Name = "FinalPrice";
             this.FinalPrice.ReadOnly = true;
-            this.FinalPrice.Width = 150;
+            this.FinalPrice.Width = 170;
             // 
             // btnPDF
             // 
@@ -335,31 +353,13 @@
             this.btnPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPDF.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPDF.ForeColor = System.Drawing.Color.White;
-            this.btnPDF.Location = new System.Drawing.Point(1190, 62);
+            this.btnPDF.Location = new System.Drawing.Point(1114, 62);
             this.btnPDF.Name = "btnPDF";
             this.btnPDF.Size = new System.Drawing.Size(130, 33);
-            this.btnPDF.TabIndex = 192;
+            this.btnPDF.TabIndex = 198;
             this.btnPDF.Text = "Export as PDF";
             this.btnPDF.UseVisualStyleBackColor = false;
             this.btnPDF.Click += new System.EventHandler(this.btnPDF_Click);
-            // 
-            // btnViewToday
-            // 
-            this.btnViewToday.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
-            this.btnViewToday.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnViewToday.FlatAppearance.BorderSize = 0;
-            this.btnViewToday.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(170)))), ((int)(((byte)(149)))));
-            this.btnViewToday.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(170)))), ((int)(((byte)(149)))));
-            this.btnViewToday.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewToday.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewToday.ForeColor = System.Drawing.Color.White;
-            this.btnViewToday.Location = new System.Drawing.Point(20, 138);
-            this.btnViewToday.Name = "btnViewToday";
-            this.btnViewToday.Size = new System.Drawing.Size(180, 31);
-            this.btnViewToday.TabIndex = 197;
-            this.btnViewToday.Text = "View Today\'s Sales Record";
-            this.btnViewToday.UseVisualStyleBackColor = false;
-            this.btnViewToday.Click += new System.EventHandler(this.btnViewToday_Click);
             // 
             // SalesReport
             // 
@@ -387,6 +387,7 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btnViewToday;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
@@ -397,17 +398,16 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewSales;
-        private System.Windows.Forms.Button btnPDF;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleID;
         private System.Windows.Forms.DataGridViewTextBoxColumn customerID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pName;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiscPercentage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn FinalPrice;
-        private System.Windows.Forms.Button btnViewToday;
+        private System.Windows.Forms.Button btnPDF;
     }
 }
