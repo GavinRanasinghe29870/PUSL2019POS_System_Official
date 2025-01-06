@@ -53,7 +53,7 @@ namespace POS_System
 
         private void UpdateCart()
         {
-            // Ensure columns are defined only once
+            
             if (dgvCart.Columns.Count == 0)
             {
                 dgvCart.Columns.Add("Name", "Product Name");
@@ -77,7 +77,7 @@ namespace POS_System
 
         private void CalculateTotals()
         {
-            decimal discount = GetDiscountFromDatabaseById(selectedDiscountId); // Get the discount using the selected Discount ID
+            decimal discount = GetDiscountFromDatabaseById(selectedDiscountId); 
             decimal tax = subtotal * taxRate;
             decimal total = subtotal - discount + tax;
 
@@ -96,10 +96,10 @@ namespace POS_System
                 using (SqlConnection conn = GetConnection())
                 {
                     conn.Open();
-                    string query = "SELECT DiscPercentage FROM Discount WHERE DiscountID = @DiscountID"; // Query by Discount ID
+                    string query = "SELECT DiscPercentage FROM Discount WHERE DiscountID = @DiscountID"; 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@DiscountID", discountId); // Pass the Discount ID as a parameter
+                        cmd.Parameters.AddWithValue("@DiscountID", discountId);
                         object result = cmd.ExecuteScalar();
                         if (result != null && decimal.TryParse(result.ToString(), out decimal discountPercentage))
                         {
@@ -116,8 +116,8 @@ namespace POS_System
             return discount;
         }
 
-        // Example property for storing the selected Discount ID
-        private int selectedDiscountId = 1; // Default or user-selected Discount ID
+       
+        private int selectedDiscountId = 1; 
 
 
 
@@ -169,7 +169,7 @@ namespace POS_System
         }
         private void numericDiscount_ValueChanged(object sender, EventArgs e)
         {
-            // Assume selectedDiscountId is updated elsewhere when a discount is selected
+            
             decimal discount = GetDiscountFromDatabaseById(selectedDiscountId);
 
             if (discount > 0)
@@ -192,7 +192,7 @@ namespace POS_System
             }
 
             string receipt = "Billing Receipt\n\nProducts:\n";
-            decimal discount = GetDiscountFromDatabaseById(selectedDiscountId); // Get discount by ID
+            decimal discount = GetDiscountFromDatabaseById(selectedDiscountId); 
             decimal tax = subtotal * taxRate;
             decimal total = subtotal - discount + tax;
 
@@ -208,7 +208,7 @@ namespace POS_System
 
             MessageBox.Show(receipt, "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Save the sales data to the database with CustomerID
+            
             SaveSalesData(total, discount, tax, subtotal, customerID);
         }
 

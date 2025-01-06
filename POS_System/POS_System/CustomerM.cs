@@ -39,7 +39,7 @@ namespace POS_System
                 {
                     connection.Open();
 
-                    // Check if Email Already Exists for a Different Customer
+                    
                     string checkQuery = "SELECT COUNT(*) FROM Customer WHERE Email = @Email AND CustomerID != @CustomerID";
                     SqlCommand checkCommand = new SqlCommand(checkQuery, connection);
                     checkCommand.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
@@ -53,10 +53,10 @@ namespace POS_System
                         return; 
                     }
 
-                    // Determine if INSERT or UPDATE
+                    
                     if (string.IsNullOrEmpty(txtSearch.Text.Trim())) 
                     {
-                        // INSERT Query
+                       
                         string insertQuery = "INSERT INTO Customer (FullName, Email, Phone) VALUES (@FullName, @Email, @Phone)";
                         SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
                         insertCommand.Parameters.AddWithValue("@FullName", txtName.Text.Trim());
@@ -138,7 +138,7 @@ namespace POS_System
 
                     if (table.Rows.Count > 0)
                     {
-                        // Populate data into textboxes
+                       
                         txtName.Text = table.Rows[0]["FullName"].ToString();
                         txtEmail.Text = table.Rows[0]["Email"].ToString();
                         txtContactInf.Text = table.Rows[0]["Phone"].ToString();
@@ -165,7 +165,7 @@ namespace POS_System
                     string query = "DELETE FROM Customer WHERE CustomerID = @CustomerID";
                     SqlCommand command = new SqlCommand(query, connection);
 
-                    // Assuming you select the customer ID from the grid
+                   
                     int selectedRow = dataGridView1.CurrentCell.RowIndex;
                     int customerId = Convert.ToInt32(dataGridView1.Rows[selectedRow].Cells["CustomerID"].Value);
                     command.Parameters.AddWithValue("@CustomerID", customerId);

@@ -71,8 +71,8 @@ namespace POS_System.UserControls
                     {
                         command.Parameters.AddWithValue("@ProductID", ProductID);
                         command.Parameters.AddWithValue("@ProductName", textBox1.Text);
-                        command.Parameters.AddWithValue("@Quantity", int.Parse(textBox2.Text)); // Proper type conversion
-                        command.Parameters.AddWithValue("@Price", decimal.Parse(textBox3.Text)); // Proper type conversion
+                        command.Parameters.AddWithValue("@Quantity", int.Parse(textBox2.Text)); 
+                        command.Parameters.AddWithValue("@Price", decimal.Parse(textBox3.Text)); 
                         command.Parameters.AddWithValue("@Category", textBox4.Text);
 
                         con.Open();
@@ -81,7 +81,7 @@ namespace POS_System.UserControls
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Product updated successfully!");
-                            LoadData(); // Refresh the data grid view
+                            LoadData();
                         }
                         else
                         {
@@ -227,13 +227,13 @@ namespace POS_System.UserControls
 
                     command.Parameters.AddWithValue("@ProductID", ProductID);
 
-                    con.Open(); // Correctly open the `con` connection
+                    con.Open(); 
                     int rowsAffected = command.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Product deleted successfully!");
-                        LoadData(); // Refresh the data grid view
+                        LoadData(); 
                     }
                     else
                     {

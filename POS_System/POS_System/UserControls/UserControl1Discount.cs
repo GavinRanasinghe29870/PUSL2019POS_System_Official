@@ -14,7 +14,7 @@ namespace POS_System.UserControls
 {
     public partial class UserControl1Discount : UserControl
     {
-        //private string connectionString = @"Data Source=Vihanga\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+        
         private string connectionString = ConnectionString.constring;
         public UserControl1Discount()
         {
@@ -22,14 +22,14 @@ namespace POS_System.UserControls
             LoadDiscount();
         }
 
-        //Method to clear input fields
+        
         private void ClearFields()
         {
-            cmbDisType.SelectedIndex = -1; //Resets ComboBox
-            txtProID.Clear(); //Clears ProductID
-            numDisPercentage.Value = 0; //Reset Numeric Updown value
-            dtpStartDate.Value = DateTime.Now;//Reset Start Date
-            dtpEndDate.Value = DateTime.Now;//Reset End Date
+            cmbDisType.SelectedIndex = -1; 
+            txtProID.Clear(); 
+            numDisPercentage.Value = 0;
+            dtpStartDate.Value = DateTime.Now;
+            dtpEndDate.Value = DateTime.Now;
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
@@ -60,8 +60,8 @@ namespace POS_System.UserControls
                     {
                         MessageBox.Show("Discount Added!");
 
-                        LoadDiscount();//Refresh DataGridView
-                        ClearFields();//Clear input fields
+                        LoadDiscount();
+                        ClearFields();
 
                     }
                 }
@@ -96,7 +96,7 @@ namespace POS_System.UserControls
                         return;
                     }
 
-                    //Add Parameters
+                    
                     cmd.Parameters.AddWithValue("@DiscountID", DiscountID);
                     cmd.Parameters.AddWithValue("@DiscType", cmbDisType.SelectedItem.ToString());
                     cmd.Parameters.AddWithValue("@DiscPercentage", numDisPercentage.Value);
@@ -104,15 +104,15 @@ namespace POS_System.UserControls
                     cmd.Parameters.AddWithValue("@StartDate", dtpStartDate.Value);
                     cmd.Parameters.AddWithValue("@EndDate", dtpEndDate.Value);
 
-                    //Execute the Query
+                    
                     conn.Open();
                     int rowsAffected = cmd.ExecuteNonQuery();
 
                     if (rowsAffected > 0)
                     {
                         MessageBox.Show("Discount updated successfully!");
-                        LoadDiscount();//Refresh the DataGridView
-                        ClearFields();//Clear input fields
+                        LoadDiscount();
+                        ClearFields();
                     }
                 }
                 catch (Exception ex)
@@ -137,10 +137,10 @@ namespace POS_System.UserControls
 
                     dgvDiscounts.DataSource = table;
 
-                    // Set AutoGenerateColumns to true for manual column definition
+                    
                     dgvDiscounts.AutoGenerateColumns = true;
 
-                    // Adjust column widths for better display
+                    
                     dgvDiscounts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
 
@@ -174,7 +174,7 @@ namespace POS_System.UserControls
 
                     if (reader.Read())
                     {
-                        // Populate the fields if the record is found
+                        
                         cmbDisType.SelectedItem = reader["DiscType"].ToString();
                         numDisPercentage.Value = Convert.ToDecimal(reader["DiscPercentage"]);
                         txtProID.Text = reader["ProductID"].ToString();
@@ -196,13 +196,13 @@ namespace POS_System.UserControls
 
         private void dgvDiscounts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Ensure a valid row is selected
+            
             if (e.RowIndex >= 0)
             {
-                //Get the selected row
+                
                 DataGridViewRow row = dgvDiscounts.Rows[e.RowIndex];
 
-                //Populate input controls with the selected row's data
+                
                 txtProID.Text = row.Cells["ProductID"].Value?.ToString();
                 cmbDisType.SelectedItem = row.Cells["DiscType"].Value?.ToString();
                 numDisPercentage.Value = Convert.ToDecimal(row.Cells["DiscPercentage"].Value ?? 0);
@@ -255,14 +255,14 @@ namespace POS_System.UserControls
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            // Validate DiscountID input
+            
             if (string.IsNullOrWhiteSpace(txtDiscountID.Text) || !int.TryParse(txtDiscountID.Text, out int DiscountID))
             {
                 MessageBox.Show("Please enter a valid Discount ID.");
                 return;
             }
 
-            // Load the discount record based on DiscountID
+            
             LoadDiscountByID(DiscountID);
         }
 

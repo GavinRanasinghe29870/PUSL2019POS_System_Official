@@ -143,7 +143,7 @@ namespace POS_System.UserControls
 
         private void ClearFields()
         {
-            //Uid.Clear();
+            
             Uname.Clear();
             Upassword.Clear();
             Uemail.Clear();
