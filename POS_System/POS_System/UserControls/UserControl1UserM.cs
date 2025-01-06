@@ -86,6 +86,7 @@ namespace POS_System.UserControls
             {
                 SqlCommand cmd = new SqlCommand("UpdateUser", conn);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@UserID", dataView.SelectedRows[0].Cells[0].Value);
                 cmd.Parameters.AddWithValue("@UserName", Uname.Text);
                 cmd.Parameters.AddWithValue("@Password", Upassword.Text);
                 cmd.Parameters.AddWithValue("@Email", Uemail.Text);
