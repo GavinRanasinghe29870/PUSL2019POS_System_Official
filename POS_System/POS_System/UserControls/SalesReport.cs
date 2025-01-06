@@ -156,12 +156,10 @@ namespace POS_System.UserControls
                         cn.Open();
                     using (DataTable dt = new DataTable("Sales"))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesVIew WHERE CAST(SaleDate AS DATE) = CAST(GETDATE() AS DATE)", cn))
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesView WHERE CAST(Date AS DATE) = CAST(GETDATE() AS DATE)", cn))
                         {
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                             adapter.Fill(dt);
-
-                            
 
                             dataGridViewSales.DataSource = dt;
                         }
@@ -190,7 +188,7 @@ namespace POS_System.UserControls
                         DateTime fromDate = dtFrom.Value.Date;
                         DateTime toDate = dtTo.Value.Date.AddDays(1).AddSeconds(-1);
 
-                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesView WHERE SaleDate BETWEEN @fromDate AND @toDate", cn))
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesView WHERE Date BETWEEN @fromDate AND @toDate", cn))
                         {
                             // Add parameters for date range
                             cmd.Parameters.AddWithValue("@fromDate", fromDate);
@@ -231,7 +229,7 @@ namespace POS_System.UserControls
                         cn.Open();
                     using (DataTable dt = new DataTable("Sales"))
                     {
-                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesVIew WHERE CAST(SaleDate AS DATE) = CAST(GETDATE() AS DATE)", cn))
+                        using (SqlCommand cmd = new SqlCommand("SELECT * FROM SalesVIew WHERE CAST(Date AS DATE) = CAST(GETDATE() AS DATE)", cn))
                         {
                             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                             adapter.Fill(dt);
