@@ -1,24 +1,29 @@
-﻿using Org.BouncyCastle.Bcpg;
-using POS_System;
-using POS_System.Classes;
+﻿using POS_System.Classes;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
-namespace StockManagement
+namespace POS_System.UserControls
 {
-    public partial class MainForm : Form
+    public partial class UserControl1stockManagement : UserControl
     {
-        private SqlConnection connection;
-        public string connectionString = "Data Source=DESKTOP-JUPKERV\\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;TrustServerCertificate=True;";
-
-        public MainForm()
+        private string connectionString = ConnectionString.constring;
+        public UserControl1stockManagement()
         {
             InitializeComponent();
             LoadData();
+        }
+
+        private void UserControl1stockManagement_Load(object sender, EventArgs e)
+        {
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,14 +37,14 @@ namespace StockManagement
                     {
                         cmd.Parameters.AddWithValue("@ProductName", textBox1.Text);
                         cmd.Parameters.AddWithValue("@UserID", Login.loggedUser);
-                        cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox2.Text)); 
-                        cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox3.Text)); 
+                        cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox2.Text));
+                        cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox3.Text));
                         cmd.Parameters.AddWithValue("@Category", textBox4.Text);
 
                         con.Open();
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Product added successfully!");
-                        LoadData(); 
+                        LoadData();
                     }
                 }
             }
@@ -91,9 +96,6 @@ namespace StockManagement
             }
         }
 
-       
-
-
         private void dgvStock_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -107,7 +109,6 @@ namespace StockManagement
                 textBox4.Text = row.Cells["Category"].Value?.ToString();
             }
         }
-
         private void LoadData()
         {
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -172,10 +173,37 @@ namespace StockManagement
                 return;
             }
 
-            LoadDataByProductID(ProductID);
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    string query = "SELECT ProductID, ProductName, Quantity, Price, Category FROM Products WHERE ProductID = @ProductID";
+                    using (SqlCommand command = new SqlCommand(query, con))
+                    {
+                        command.Parameters.AddWithValue("@ProductID", ProductID);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+
+                        if (table.Rows.Count > 0)
+                        {
+                            dgvStock.DataSource = table;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No product found with the given ID.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             if (dgvStock.CurrentRow == null)
             {
@@ -220,52 +248,6 @@ namespace StockManagement
             }
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            if (!int.TryParse(textBoxsearch.Text, out int ProductID))
-            {
-                MessageBox.Show("Please enter a valid ProductID!");
-                return;
-            }
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    string query = "SELECT ProductID, ProductName, Quantity, Price, Category FROM Products WHERE ProductID = @ProductID";
-                    using (SqlCommand command = new SqlCommand(query, con))
-                    {
-                        command.Parameters.AddWithValue("@ProductID", ProductID);
-                        SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                        DataTable table = new DataTable();
-                        adapter.Fill(table);
-
-                        if (table.Rows.Count > 0)
-                        {
-                            dgvStock.DataSource = table;
-                        }
-                        else
-                        {
-                            MessageBox.Show("No product found with the given ID.");
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: " + ex.Message);
-                }
-            }
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxuID_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

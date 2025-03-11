@@ -207,11 +207,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControls\UserControl1CustomerM.cs">
+    <Compile Include="UserControls\UserControl1stockManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\UserControl1CustomerM.Designer.cs">
-      <DependentUpon>UserControl1CustomerM.cs</DependentUpon>
+    <Compile Include="UserControls\UserControl1stockManagement.Designer.cs">
+      <DependentUpon>UserControl1stockManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControl1UserM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControl1UserM.Designer.cs">
+      <DependentUpon>UserControl1UserM.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControl1Discount.cs">
       <SubType>UserControl</SubType>
@@ -294,8 +300,11 @@
     <EmbeddedResource Include="UserControls\SalesReport.resx">
       <DependentUpon>SalesReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\UserControl1CustomerM.resx">
-      <DependentUpon>UserControl1CustomerM.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\UserControl1stockManagement.resx">
+      <DependentUpon>UserControl1stockManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControl1UserM.resx">
+      <DependentUpon>UserControl1UserM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControl1Discount.resx">
       <DependentUpon>UserControl1Discount.cs</DependentUpon>

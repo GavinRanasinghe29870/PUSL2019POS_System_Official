@@ -30,6 +30,7 @@ namespace POS_System.UserControls
             pnlSel.Height = 5;
             pnlSel.Top = btnSR.Bottom - pnlSel.Height - 1;
             pnlSel.Left = btnSR.Left;
+            this.Hide();
         }
 
         private void btnSR_Click(object sender, EventArgs e)

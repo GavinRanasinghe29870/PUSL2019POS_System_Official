@@ -34,11 +34,17 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.userControl1stockManagement1 = new POS_System.UserControls.UserControl1stockManagement();
+            this.userControl1UserM1 = new POS_System.UserControls.UserControl1UserM();
+            this.userControl1Discount2 = new POS_System.UserControls.UserControl1Discount();
+            this.userControl1Report1 = new POS_System.UserControls.UserControl1Report();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
@@ -109,13 +115,58 @@
             this.label1.Text = "ABC \r\nSuperMarket";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Form1
+            // userControl1stockManagement1
+            // 
+            this.userControl1stockManagement1.Location = new System.Drawing.Point(227, 109);
+            this.userControl1stockManagement1.Name = "userControl1stockManagement1";
+            this.userControl1stockManagement1.Size = new System.Drawing.Size(1787, 788);
+            this.userControl1stockManagement1.TabIndex = 5;
+            // 
+            // userControl1UserM1
+            // 
+            this.userControl1UserM1.Location = new System.Drawing.Point(227, 109);
+            this.userControl1UserM1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.userControl1UserM1.Name = "userControl1UserM1";
+            this.userControl1UserM1.Size = new System.Drawing.Size(1787, 788);
+            this.userControl1UserM1.TabIndex = 4;
+            // 
+            // userControl1Discount2
+            // 
+            this.userControl1Discount2.Location = new System.Drawing.Point(227, 109);
+            this.userControl1Discount2.Name = "userControl1Discount2";
+            this.userControl1Discount2.Size = new System.Drawing.Size(1787, 788);
+            this.userControl1Discount2.TabIndex = 3;
+            // 
+            // userControl1Report1
+            // 
+            this.userControl1Report1.Location = new System.Drawing.Point(224, 0);
+            this.userControl1Report1.Name = "userControl1Report1";
+            this.userControl1Report1.Size = new System.Drawing.Size(1818, 944);
+            this.userControl1Report1.TabIndex = 2;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(3, 597);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(218, 91);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Log Out";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 897);
+            this.Controls.Add(this.userControl1stockManagement1);
+            this.Controls.Add(this.userControl1UserM1);
+            this.Controls.Add(this.userControl1Discount2);
+            this.Controls.Add(this.userControl1Report1);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "Dashboard";
             this.Text = "Form1";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -132,6 +183,11 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private UserControls.UserControl1Discount userControl1Discount1;
+        private UserControls.UserControl1Report userControl1Report1;
+        private UserControls.UserControl1Discount userControl1Discount2;
+        private UserControls.UserControl1UserM userControl1UserM1;
+        private UserControls.UserControl1stockManagement userControl1stockManagement1;
+        private System.Windows.Forms.Button button5;
     }
 }
 

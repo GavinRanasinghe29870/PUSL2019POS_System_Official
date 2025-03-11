@@ -1,4 +1,5 @@
-﻿using System;
+﻿using POS_System.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +16,7 @@ namespace POS_System
     public partial class CustomerM : Form
 
     {
-      private  string connectionString = @"Data Source=DESKTOP-P4B5KHI\SQLEXPRESS;Initial Catalog=abcsupermarket;Integrated Security=True;Encrypt=True;TrustServerCertificate=True";
+        private string connectionString = ConnectionString.constring;
 
         public CustomerM()
         {

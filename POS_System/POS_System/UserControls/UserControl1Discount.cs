@@ -265,5 +265,10 @@ namespace POS_System.UserControls
             // Load the discount record based on DiscountID
             LoadDiscountByID(DiscountID);
         }
+
+        private void dgvDiscounts_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

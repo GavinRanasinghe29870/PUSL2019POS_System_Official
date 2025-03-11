@@ -19,6 +19,7 @@ namespace POS_System
             InitializeComponent();
         }
 
+        public static int loggedUser = 0;
         private void textBox1_login_TextChanged(object sender, EventArgs e)
         {
 
@@ -47,32 +48,38 @@ namespace POS_System
                         conn.Open();
 
                         string query = $"SELECT * FROM Users WHERE UserName =  @Username AND Passwords = @Passwords AND UserType = @UserType";
-                        SqlCommand cmd = new SqlCommand(query, conn);
-                        cmd.Parameters.AddWithValue("@Username", Username);
-                        cmd.Parameters.AddWithValue("@Passwords", Password);
-                        cmd.Parameters.AddWithValue("@UserType", selectRole);
-                        SqlDataReader reader = cmd.ExecuteReader();
-
-                        if (reader.HasRows)
+                        using (SqlCommand cmd = new SqlCommand(query, conn))
                         {
-                            reader.Read();
-                            if (selectRole == "Cashier")
-                            {
-                                sales_billing sales_Billing = new sales_billing();
-                                sales_Billing.Show();
-                            }
-                            else if (selectRole == "Admin")
-                            {
-                                Dashboard customerM = new Dashboard();
-                                customerM.Show();
-                                this.Hide();
-                            }
-                            this.Hide();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Invalid Credential. Please Try Again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            cmd.Parameters.AddWithValue("@Username", Username);
+                            cmd.Parameters.AddWithValue("@Passwords", Password);
+                            cmd.Parameters.AddWithValue("@UserType", selectRole);
 
+                            using (SqlDataReader reader = cmd.ExecuteReader())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    reader.Read();
+                                    loggedUser = reader.GetInt32(0);
+
+                                    if (selectRole == "Cashier")
+                                    {
+                                        sales_billing sales_Billing = new sales_billing();
+                                        sales_Billing.Show();
+                                    }
+                                    else if (selectRole == "Admin")
+                                    {
+                                        Console.Write(loggedUser);
+                                        Dashboard dashboard = new Dashboard();
+                                        dashboard.Show();
+                                    }
+
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid Credential. Please Try Again.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            }
                         }
                     }
                     catch (Exception ex)

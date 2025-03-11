@@ -35,6 +35,10 @@ namespace POS_System
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnRemoveProduct = new System.Windows.Forms.Button();
             this.btnGenerateBill = new System.Windows.Forms.Button();
+            this.textBoxCusID = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +53,7 @@ namespace POS_System
             // 
             // numericDiscount
             // 
-            this.numericDiscount.Location = new System.Drawing.Point(16, 47);
+            this.numericDiscount.Location = new System.Drawing.Point(16, 54);
             this.numericDiscount.Margin = new System.Windows.Forms.Padding(4);
             this.numericDiscount.Name = "numericDiscount";
             this.numericDiscount.Size = new System.Drawing.Size(265, 22);
@@ -61,12 +65,13 @@ namespace POS_System
             this.dgvCart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(94)))), ((int)(((byte)(94)))));
             this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCart.Location = new System.Drawing.Point(16, 79);
+            this.dgvCart.Location = new System.Drawing.Point(16, 121);
             this.dgvCart.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCart.Name = "dgvCart";
             this.dgvCart.RowHeadersWidth = 51;
-            this.dgvCart.Size = new System.Drawing.Size(1035, 308);
+            this.dgvCart.Size = new System.Drawing.Size(1035, 266);
             this.dgvCart.TabIndex = 2;
+            this.dgvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCart_CellContentClick);
             // 
             // lblSubtotal
             // 
@@ -87,6 +92,7 @@ namespace POS_System
             this.lblDiscount.Size = new System.Drawing.Size(96, 16);
             this.lblDiscount.TabIndex = 4;
             this.lblDiscount.Text = "Discount: $0.00";
+            this.lblDiscount.Click += new System.EventHandler(this.lblDiscount_Click);
             // 
             // lblTax
             // 
@@ -145,11 +151,56 @@ namespace POS_System
             this.btnGenerateBill.UseVisualStyleBackColor = false;
             this.btnGenerateBill.Click += new System.EventHandler(this.btnGenerateBill_Click);
             // 
+            // textBoxCusID
+            // 
+            this.textBoxCusID.Location = new System.Drawing.Point(119, 91);
+            this.textBoxCusID.Name = "textBoxCusID";
+            this.textBoxCusID.Size = new System.Drawing.Size(100, 22);
+            this.textBoxCusID.TabIndex = 10;
+            this.textBoxCusID.TextChanged += new System.EventHandler(this.textBoxCusID_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 94);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 16);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "CustomerID";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(882, 42);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(136, 42);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Add Customer";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(194)))), ((int)(((byte)(174)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(740, 42);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(136, 42);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Log Out";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // sales_billing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxCusID);
             this.Controls.Add(this.btnGenerateBill);
             this.Controls.Add(this.btnRemoveProduct);
             this.Controls.Add(this.btnAddProduct);
@@ -187,156 +238,21 @@ namespace POS_System
         private const decimal taxRate = 0.10m;
 
 
-
-        private void btnAddProduct_Click(object sender, EventArgs e)
+        private void dgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            string barcode = txtBarcode.Text;
-            Product product = new Product { Name = barcode, Price = (decimal)(new Random().NextDouble() * 100), Quantity = 1 };
-
-            var existingProduct = cart.Find(item => item.Name == product.Name);
-            if (existingProduct != null)
+            // Handle the cell content click event.
+            // For example, display the clicked cell's value:
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
-                existingProduct.Quantity++;
-            }
-            else
-            {
-                cart.Add(product);
-            }
-
-            UpdateCart();
-            txtBarcode.Clear();
-        }
-        private void AddProductToDatabase(string barcode, decimal price, int quantity)
-        {
-            using (SqlConnection conn = GetConnection())
-            {
-                string query = "INSERT INTO Products (Barcode, Price, Quantity) VALUES (@Barcode, @Price, @Quantity)";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@Barcode", barcode);
-                    cmd.Parameters.AddWithValue("@Price", price);
-                    cmd.Parameters.AddWithValue("@Quantity", quantity);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
+                MessageBox.Show($"Cell clicked: {dgvCart.Rows[e.RowIndex].Cells[e.ColumnIndex].Value}");
             }
         }
 
-        private void UpdateCart()
-        {
-            // Ensure columns are defined only once
-            if (dgvCart.Columns.Count == 0)
-            {
-                dgvCart.Columns.Add("Name", "Product Name");
-                dgvCart.Columns.Add("Price", "Price");
-                dgvCart.Columns.Add("Quantity", "Quantity");
-                dgvCart.Columns.Add("Total", "Total");
-            }
-
-            dgvCart.Rows.Clear();
-            subtotal = 0;
-
-            foreach (var item in cart)
-            {
-                decimal itemTotal = item.Price * item.Quantity;
-                dgvCart.Rows.Add(item.Name, item.Price.ToString("F2"), item.Quantity, itemTotal.ToString("F2"));
-                subtotal += itemTotal;
-            }
-
-            CalculateTotals();
-        }
-
-        private void CalculateTotals()
-        {
-            decimal discount = numericDiscount.Value;
-            decimal tax = subtotal * taxRate;
-            decimal total = subtotal - discount + tax;
-
-            lblSubtotal.Text = $"Subtotal: ${subtotal:F2}";
-            lblDiscount.Text = $"Discount: ${discount:F2}";
-            lblTax.Text = $"Tax (10%): ${tax:F2}";
-            lblTotal.Text = $"Total: ${total:F2}";
-        }
-
-        private void numericDiscount_ValueChanged(object sender, EventArgs e)
-        {
-            CalculateTotals();
-        }
-
-        private void btnRemoveProduct_Click(object sender, EventArgs e)
-        {
-            if (dgvCart.SelectedRows.Count > 0)
-            {
-                string productName = dgvCart.SelectedRows[0].Cells[0].Value.ToString();
-                var productToRemove = cart.Find(item => item.Name == productName);
-                if (productToRemove != null)
-                {
-                    cart.Remove(productToRemove);
-                }
-
-                UpdateCart();
-            }
-        }
-
-        //function 1
-        private decimal CalculateDiscountedTotal(decimal subtotal, decimal discount)
-        {
-            using (SqlConnection conn = GetConnection())
-            {
-                string query = "SELECT dbo.CalculateDiscountedTotal(@subtotal, @discount)";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@subtotal", subtotal);
-                    cmd.Parameters.AddWithValue("@discount", discount);
-                    conn.Open();
-                    return (decimal)cmd.ExecuteScalar();
-                }
-            }
-        }
-        //function 2
-
-        private decimal CalculateTax(decimal amount, decimal taxRate)
-        {
-            using (SqlConnection conn = GetConnection())
-            {
-                string query = "SELECT dbo.CalculateTax(@amount, @taxRate)";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@amount", amount);
-                    cmd.Parameters.AddWithValue("@taxRate", taxRate);
-                    conn.Open();
-                    return (decimal)cmd.ExecuteScalar();
-                }
-            }
-        }
-
-
-        private void btnGenerateBill_Click(object sender, EventArgs e)
-        {
-            string receipt = "Billing Receipt\n\nProducts:\n";
-            decimal discount = numericDiscount.Value;
-            decimal tax = subtotal * taxRate;
-            decimal total = subtotal - discount + tax;
-
-            foreach (var item in cart)
-            {
-                decimal itemTotal = item.Price * item.Quantity;
-                receipt += $"{item.Name}: ${item.Price:F2} x {item.Quantity} = ${itemTotal:F2}\n";
-            }
-            receipt += $"\nSubtotal: ${subtotal:F2}\n";
-            receipt += $"Discount: ${discount:F2}\n";
-            receipt += $"Tax (10%): ${tax:F2}\n";
-            receipt += $"Total: ${total:F2}\n";
-
-            MessageBox.Show(receipt, "Receipt", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        private TextBox textBoxCusID;
+        private Label label1;
+        private Button button1;
+        private Button button2;
     }
 
-
-    public class Product
-    {
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public int Quantity { get; set; }
-    }
 }
+
